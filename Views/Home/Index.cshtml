@@ -2,7 +2,7 @@
     using var companys = new z_sqlCompanys();
     using var questions = new z_sqlQuestions();
     var company = companys.GetDefaultCompany();
-    var questionList = questions.GetDataList();
+    var questionList = questions.GetDataList().Take(3);
 }
 
 <!-- Banner -->

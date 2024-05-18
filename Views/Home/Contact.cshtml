@@ -1,0 +1,52 @@
+@model vmContact
+
+@{
+    ViewData["Title"] = "連絡我們";
+}
+
+<!-- 內容 -->
+<main id="container">
+    <!-- 聯絡我們 -->
+    <section class="contact" id="contact">
+        @using(Html.BeginForm("Contact" , "Home" , new {area = ""} , FormMethod.Post , null , new { @class="form"})) 
+        {
+            @Html.AntiForgeryToken()
+            <h2 class="title" style="font-family: Kalam">聯絡我們</h2>
+            <fieldset class="form_main">
+            <fieldset class="form_left">
+                <div class="inputContainer">
+                    <input type="email" id="ContactorEmail" name="ContactorEmail" class="input" placeholder="a" required />
+                    <label for="ContactorEmail" class="label">電子信箱</label>
+                </div>
+
+                <div class="inputContainer">
+                    <input type="text" id="ContactorName" name="ContactorName" class="input" placeholder="a" required />
+                    <label for="ContactorName" class="label">姓名</label>
+                </div>
+
+                <div class="inputContainer">
+                    <input type="text" id="ContactorSubject" name="ContactorSubject" class="input" placeholder="a" required />
+                    <label for="ContactorSubject" class="label">主旨</label>
+                </div>
+            </fieldset>
+
+            <fieldset class="form_right">
+                <div class="inputContainer"> 
+                    <textarea id="ContactorMessage" name="ContactorMessage" class="input" cols="30" rows="20" placeholder="a" required></textarea>
+                    <label for="ContactorMessage" class="label">留言</label>
+                </div>
+            </fieldset>
+            </fieldset>
+
+            <button name="submit" type="submit" class="submitBtn">
+            確認送出
+            </button>
+        }
+    </section>
+</main>
+
+@section Styles
+{
+    <!-- 依需要引用不同樣式表 -->
+    <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/style.css")" />
+}

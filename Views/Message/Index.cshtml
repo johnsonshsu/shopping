@@ -7,25 +7,38 @@
     string str_name = "返回登入頁";
     if (SessionService.StringValue1 == "WebLogin")
     {
-        str_controller = "Login";
+        str_controller = "User";
+        str_action = "Login";
         str_name = "返回登入頁";
     }
     if (SessionService.StringValue1 == "ShopIndex")
     {
         str_controller = "Home";
+        str_action = "Index";
         str_name = "繼續購物";
     }
 }
 
-<div class="alert alert-success my-2 py-2">
-    <h2>訊息提示</h2>
-    <h5 class="text-danger">
-        @Html.Raw(SessionService.MessageText)
-    </h5>
-    <br />
-    <div class="btnContainer">
-        <a name="login" href="@Url.Action(str_action , str_controller , new {area = str_area})" class="btn btn-success">
-            @str_name
-        </a>
+<div class="card card-size-medium mt-5">
+    <div class="card-header bg-secondary text-white">
+        <div class="pt-2 px-2">
+            <div class="float-start">
+                <h4>訊息提示</h4>
+            </div>
+        </div>
     </div>
-</div>>
+    <div class="card-body">
+        <div class="alert alert-success my-2 py-2">
+            <h5 class="text-danger">
+                @Html.Raw(SessionService.MessageText)
+            </h5>
+            <br />
+            <div class="btnContainer">
+                <a name="login" href="@Url.Action(str_action , str_controller , new {area = str_area})"
+                    class="btn btn-success">
+                    @str_name
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
