@@ -1,0 +1,658 @@
+/* 加入自定樣式表 (CSS) */
+.card-size-small {
+    max-width: 576px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin: auto;
+}
+
+.card-size-medium {
+    max-width: 768px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin: auto;
+}
+
+.card-size-large {
+    max-width: 992px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin: auto;
+}
+
+.card-size-max {
+    max-width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 4px !important;
+}
+
+.table th {
+    font-weight: bold;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.table td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.table-wrap {
+    width: 100%;
+}
+
+.control-label {
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+}
+
+.page-info {
+    font-size: large;
+    font-weight: bold;
+}
+
+.pagination-container {
+    display: flex;
+    flex: 1;
+}
+
+.pagination {
+    display: flex;
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    gap: 0.625rem;
+    font-size: large;
+    font-weight: bold;
+}
+
+.page-item,
+.page-link {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PagedList-pageCountAndLocation {
+    justify-content: start;
+    order: -1;
+    flex: 1;
+}
+
+
+/* login */
+/* 內容 */
+#container {
+    margin-top: 50px;
+}
+
+#login {
+    width: 90%;
+    /* height: 550px; */
+    margin: 20px auto;
+    /* margin-top: 0px; */
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: #687685; */
+    /* padding: 30px 20px; */
+}
+
+#login .form {
+    width: 40%;
+    padding: 30px 40px;
+    border-radius: 10px;
+    /* border: 1px solid #ccc; */
+    height: 100%;
+    background: rgb(247, 247, 247);
+    box-shadow: 0px 0px 11px #ccc;
+}
+
+#login h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-bottom: 70px;
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    color: #687685;
+    border-bottom: 5px solid #687685;
+}
+
+
+#login .inputContainer {
+    height: 45px;
+    width: 100%;
+    margin: 30px auto;
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#login .label {
+    width: 11%;
+    height: 45px;
+    line-height: 45px;
+    color: #687685;
+    font-size: 18px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+#login .input {
+    height: 45px;
+    width: 85%;
+    border: 2px solid #b9b9b9;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 10px;
+    outline: none;
+    background: none;
+    color: #687685;
+    box-sizing: border-box;
+}
+
+#login .input:focus {
+    border: 2px solid #687685;
+}
+
+#login .forgetPasswordBtn {
+    display: block;
+    text-align: right;
+    color: #687685;
+}
+
+#login .btnContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    height: 200px;
+    width: 100%;
+    margin-top: 20px;
+    /* margin: auto; */
+    /* border: 1px solid #000; */
+}
+
+#login .loginBtn {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* display: block; */
+    /* width: 150px; */
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    /* background-color: rgba(255, 255, 255, 0.85); */
+    /* color: rgba(235, 235, 235, .85); */
+    background-color: #424B54;
+    border: 2px solid #424B54;
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    margin: auto;
+    /* margin-bottom: 30px; */
+}
+
+#login .registerBtn {
+    /* display: block; */
+    /* display: inline-block; */
+    /* width: 150px; */
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    /* background-color: rgba(255, 255, 255, 0.85); */
+    /* color: rgba(235, 235, 235, .85); */
+    /* background-color: rgba(235, 235, 235, 1); */
+    background: rgb(247, 247, 247);
+    border: 2px solid #687685;
+    color: #687685;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 0px;
+    /* margin-bottom: 30px; */
+}
+
+#login .loginBtn:hover {
+    /* background: rgba(255, 255, 255, 1); */
+    background: #687685;
+    border: 2px solid #687685;
+    color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+#login .registerBtn:hover {
+    background: #687685;
+    color: rgba(255, 255, 255, 1);
+    transition: .3s;
+    border: 2px solid #687685;
+}
+
+/* register */
+#register {
+    width: 90%;
+    margin: 20px auto;
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#register .form {
+    width: 60%;
+    padding: 30px 40px;
+    border-radius: 10px;
+    /* border: 1px solid #ccc; */
+    height: 100%;
+    background: rgb(247, 247, 247);
+    box-shadow: 0px 0px 11px #ccc;
+}
+
+#register h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-bottom: 70px;
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    color: #687685;
+    border-bottom: 5px solid #687685;
+}
+
+
+#register .inputContainer {
+    height: 45px;
+    width: 100%;
+    margin: 25px auto;
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#register .label {
+    width: 17%;
+    height: 45px;
+    line-height: 45px;
+    color: #687685;
+    font-size: 18px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+#register .input {
+    height: 45px;
+    width: 85%;
+    border: 2px solid #b9b9b9;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 10px;
+    outline: none;
+    background: none;
+    color: #687685;
+    box-sizing: border-box;
+}
+
+#register .input:focus {
+    border: 2px solid #687685;
+}
+
+#register .forgetPasswordBtn {
+    display: block;
+    text-align: right;
+    color: #687685;
+    margin-top: -30px;
+}
+
+#register .btnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100px;
+    width: 100%;
+    margin-top: 30px;
+    /* margin: auto; */
+    /* border: 1px solid #000; */
+}
+
+#register .registerBtn {
+    width: 40%;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    background-color: #424B54;
+    border: 2px solid #424B54;
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    margin: auto;
+}
+
+#register .registerBtn:hover {
+    background: #687685;
+    border: 2px solid #687685;
+    color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+#register .loginBtn {
+    width: 40%;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    background: rgb(247, 247, 247);
+    border: 2px solid #687685;
+    color: #687685;
+    font-size: 20px;
+    margin: auto;
+
+}
+
+#register .loginBtn:hover {
+    background: #687685;
+    color: rgba(255, 255, 255, 1);
+    transition: .3s;
+    border: 2px solid #687685;
+}
+
+/* forget */
+#forget {
+    width: 90%;
+    margin: 20px auto;
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#forget .form {
+    width: 50%;
+    padding: 30px 40px;
+    border-radius: 10px;
+    /* border: 1px solid #ccc; */
+    /* height: 80%; */
+    background: rgb(247, 247, 247);
+    box-shadow: 0px 0px 11px #ccc;
+}
+
+#forget h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-bottom: 70px;
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    color: #687685;
+    border-bottom: 5px solid #687685;
+}
+
+
+#forget .inputContainer {
+    height: 45px;
+    width: 100%;
+    margin: 25px auto;
+    box-sizing: border-box;
+    /* border: 1px solid #000; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#forget .label {
+    width: 17%;
+    height: 45px;
+    line-height: 45px;
+    color: #687685;
+    font-size: 18px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+#forget .input {
+    height: 45px;
+    width: 75%;
+    border: 2px solid #b9b9b9;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 0 10px;
+    outline: none;
+    background: none;
+    color: #687685;
+    box-sizing: border-box;
+}
+
+#forget .input:focus {
+    border: 2px solid #687685;
+}
+
+#forget .forgetPasswordBtn {
+    display: block;
+    text-align: right;
+    color: #687685;
+    margin-top: -30px;
+}
+
+#forget .btnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100px;
+    width: 100%;
+    margin-top: 30px;
+    /* margin: auto; */
+    /* border: 1px solid #000; */
+}
+
+#forget .loginBtn {
+    width: 40%;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    background: rgb(247, 247, 247);
+    border: 2px solid #687685;
+    color: #687685;
+    font-size: 20px;
+    margin: auto;
+
+}
+
+#forget .forgetBtn {
+    width: 40%;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    background-color: #424B54;
+    border: 2px solid #424B54;
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    margin: auto;
+}
+
+#forget .forgetBtn:hover {
+    background: #687685;
+    border: 2px solid #687685;
+    color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+#forget .loginBtn:hover {
+    background: #687685;
+    color: rgba(255, 255, 255, 1);
+    transition: .3s;
+    border: 2px solid #687685;
+}
+
+
+/* message */
+
+#mg {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    /* background: #687685; */
+    /* padding: 30px 20px; */
+}
+
+#mg .mgbox {
+    width: 50%;
+    height: auto;
+    padding: 30px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    /* border: 1px solid #ccc; */
+    /* height: 80%; */
+    background: rgb(247, 247, 247);
+    box-shadow: 0px 0px 11px #ccc;
+}
+
+#mg h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-bottom: 70px;
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    color: #687685;
+    border-bottom: 5px solid #687685;
+}
+
+#mg .btnContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 200px; */
+    margin-top: 20px;
+    width: 100%;
+    /* margin: auto; */
+    border: 1px solid #000;
+}
+
+#mg .loginBtn {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* display: block; */
+    /* width: 150px; */
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    /* background-color: rgba(255, 255, 255, 0.85); */
+    /* color: rgba(235, 235, 235, .85); */
+    background-color: #424B54;
+    border: 2px solid #424B54;
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    margin: auto;
+    /* margin-bottom: 30px; */
+}
+
+#mg .loginBtn:hover {
+    /* background: rgba(255, 255, 255, 1); */
+    background: #687685;
+    border: 2px solid #687685;
+    color: rgba(255, 255, 255, 1);
+    transition: .3s;
+}
+
+
+/* 行動裝置 */
+@media screen and (max-width:767px) {
+
+    #container {
+        padding: 0;
+    }
+
+    #login {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    #login .form {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    #login .inputContainer {
+        /* margin: 20px 0; */
+        width: 100%;
+    }
+
+    #login .btnContainer {
+        width: 100%;
+    }
+
+    #login .submitBtn {
+        margin-top: 5px;
+    }
+
+    #login .registerBtn {
+        margin-top: 5px;
+    }
+
+    /* register */
+    #register {
+        width: 100%;
+    }
+
+    #register .form {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    /* forget */
+    #forget {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    #forget .form {
+        width: 100%;
+        padding: 30px 20px;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    /* message */
+    #mg {
+        width: 100%;
+    }
+
+    #mg .mgbox {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+}

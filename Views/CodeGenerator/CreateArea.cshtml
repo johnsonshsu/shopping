@@ -1,0 +1,40 @@
+@using CodeGenerator;
+@model CodeGenerator.CodeGeneratorModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutCodeGenerator";
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-primary text-white">
+        <h5>ASP.Net Core Area(區域) 產生器</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.AreaName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.AreaName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AreaName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="float-start">
+                            <input type="submit" value="建立區域" class="btn btn-primary" onclick="return confirm('是否確定要執行?');"/>
+                        </div>
+                        <div class="float-end">
+                            @Html.ActionLink("返回上一頁", "Index", "CodeGenerator" , new {area = ""} , new { @class = "btn btn-success"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

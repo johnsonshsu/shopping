@@ -1,0 +1,110 @@
+@using CodeGenerator;
+@model CodeGenerator.CodeGeneratorModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutCodeGenerator";
+    using var codeService = new CodeGeneratorService();
+    using var enumSortDirection = new EnumService<enSortDirection>();
+    List<SelectListItem> SortColumnNameList = codeService.GetSortColumnList(Model);
+    List<SelectListItem> SortDirectionList = new List<SelectListItem>();
+    SortDirectionList = enumSortDirection.DropdownList();
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-primary text-white">
+        <h5>ASP.Net Core Repository (資料表 CRUD) 產生器</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ConnStringName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ConnStringName, new { htmlAttributes = new { @class = "form-control" , @readonly="readonly"} })
+                    </div>
+                </div>
+                @if(Model.TableSelectType == "1")
+                {
+                    <div class="row form-group">
+                           @Html.LabelFor(model => model.TableViewName, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.TableViewName, new { htmlAttributes = new { @class = "form-control" , @readonly="readonly"} })
+                        </div>
+                    </div>
+                }
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.SortColumnName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.SortColumnName, SortColumnNameList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SortColumnName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.SortDirection, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.SortDirection, SortDirectionList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SortDirection, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.UseDropDownList, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.CheckBoxFor(model => model.UseDropDownList, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UseDropDownList, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div id="changeDropDown">
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DropDownColumnNo, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.DropDownColumnNo, SortColumnNameList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DropDownColumnNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DropDownColumnName, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.DropDownColumnName, SortColumnNameList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DropDownColumnName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="float-start">
+                            <input type="submit" value="下一步" class="btn btn-primary"/>
+                        </div>
+                        <div class="float-end">
+                            @Html.ActionLink("返回上一頁", "Index", "CodeGenerator" , new {area = ""} , new { @class = "btn btn-success"})
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <h6 class="text-danger">備註：請選擇預設的排序欄位及排序方式.</h6>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    var chDropDown = $('#changeDropDown');
+    var ckUseDropDownList = $('#UseDropDownList');
+
+    chDropDown.show();
+
+    ckUseDropDownList.on('click', function() {
+    if ($(this).is(':checked')) {
+      chDropDown.show();
+    } else {
+      chDropDown.hide();
+    }});
+</script>

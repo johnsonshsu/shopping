@@ -1,0 +1,213 @@
+﻿@using shopping.Models;
+@{
+    List<Categorys> CategoryList = new List<Categorys>();
+    using var categorys = new z_sqlCategorys();
+    using var companys = new z_sqlCompanys();
+    CategoryList = categorys.GetTopCategoryList();
+    var company = companys.GetDefaultCompany();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="@AppService.AppDescription" />
+        <meta name="keywords" content="@AppService.AppKeywords" />
+        <title>@AppService.AppName</title>
+
+        <!-- CSS 樣式表 -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Gudea:wght@400;700&family=Kalam:wght@400;700&family=Ms+Madi&display=swap" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/plugins/animate.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/plugins/meanmenu.min.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/plugins/custom-animation.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/plugins/slick.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/plugins/jquery-ui.min.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/shortcode/default.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/nivo-slider.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/plugins/fancybox/jquery.fancybox.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/reset.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/shortcode/shortcodes.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/responsive.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/header-footer-tool.css")" />
+        <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/icofont/header-footer-tool.css")" />
+
+        <link rel="stylesheet" href="@Url.Content("~/css/site.css")" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+
+        <!-- Javascript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/jquery.nivo.slider.pack.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/jquery.nivo.slider.pack.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+        <script src="@Url.Content("~/lib/RewearFrontend/js/slider/nivo-active.js")"></script>
+        <script src="@Url.Content("~/lib/RewearFrontend/js/plugins.js")"></script>
+        <script src="@Url.Content("~/lib/RewearFrontend/js/tooltip.js")"></script>
+        <script src="@Url.Content("~/lib/RewearFrontend/js/vendor/modernizr-3.11.2.min.js")"></script>
+        <script src="@Url.Content("~/js/site.js")" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    </head>
+
+    <body>
+        <!-- 頁首 -->
+        <header id="header">
+            <!-- 上邊導航 -->
+            <nav>
+                <div class="subject">
+                    <div class="navbar navbar-bg navbar-expand-lg p-0 m-0">
+                        <!-- 漢堡選單標題 -->
+                        <h1><a href="@Url.Action("Index" , "Home" , new {area = ""})">@AppService.AppName</a>
+                        </h1>
+                        <!-- 漢堡選單按鈕 -->
+                        <button class="navbar-toggler btn-menu" data-bs-toggle="collapse" data-bs-target="#menu">
+                            <span class="icofont-navigation-menu icofont-menu"></span>
+                        </button>
+                        <!-- 漢堡選單內容 -->
+                        <div class="collapse navbar-collapse .navbar-f" id="menu">
+                            <ul class="navbar-nav list justify-content-end">
+                                <li><a href="@Url.Action("Index" , "Category" , new {area = ""})">所有商品</a></li>
+                                @foreach (var item in CategoryList)
+                                {
+                                    <li><a href="@Url.Action("Index" , "Category" , new {area = "" , id=item.CategoryNo})">@item.CategoryName</a></li>
+                                }
+                                <li><a href="#about">關於我們</a></li>
+                                <li><a href="@Url.Action("Contact" , "Home" , new {area = ""})">聯絡我們</a></li>
+                                <li><a href="#faq">常見問題</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- 下邊功能 -->
+        <div id="function">
+            <div class="clearfix box">
+                <!-- 購物車 -->
+                <div class="cart fr">
+                    <a href="@Url.Action("Index" , "Cart" , new {area = ""})">
+                        <span class="icofont-cart">
+                            <span ps-3>(0)</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- 登入 -->
+                <div class="fr a_login me-5">
+                    <span class="icofont-ui-user login">
+                        <span ps-3>@SessionService.UserName</span>
+                    </span>
+                    <div class="submenu">
+                        <ul>
+                        @if (SessionService.IsLogin)
+                        {
+                                <li><a
+                                        href="@Url.Action("Init" , "Order" , new {area = "Member" , id = "unclosed"})">未結訂單查詢</a>
+                                </li>
+                                <li><a
+                                        href="@Url.Action("Init" , "Order" , new {area = "Member" , id = "closed"})">未結訂單查詢</a>
+                                </li>
+                                <li><a
+                                        href="@Url.Action("Index" , "Profile" , new {area = "" })">我的帳號</a>
+                                </li>
+                                <li><a href="@Url.Action("Logout" , "User" , new {area = ""})">登出</a></li>
+                        }
+                        else
+                        {
+                                <li><a href="@Url.Action("Login" , "User" , new {area = ""})">登入</a></li>
+                        }
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 搜索 -->
+                <div class="search fl">
+                    <!-- 搜索輸入框 -->
+                    <form action="#" class="clearfix">
+                        <!-- 搜索鍵 -->
+                        <div class="icon-s fl">
+                            <span class="icofont-search-1"></span>
+                        </div>
+                        <div class="searchBox fr">
+                            <!-- 文字輸入框 -->
+                            <input type="search" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 內容 -->
+        <main id="container">
+        @RenderBody()
+        </main>
+
+        <!-- 頁尾 -->
+        <footer id="footer">
+            <div class="flbox">
+                <div class="box">
+                    <a href="Index.html">
+                        <img src="@Url.Content("~/lib/RewearFrontend/images/app/logo-2.png")" alt=""
+                            class="img-fluid" />
+                    </a>
+                </div>
+                <div class="v-line"></div>
+                <div class="box boxabout">
+                    <a href="@Url.Action("Index" , "Category" , new {area = "", id = ""})">所有商品</a>
+                    @foreach (var item in CategoryList)
+                    {
+                        <a href="@Url.Action("Index" , "Category" , new {area = "" , id=item.CategoryNo})">@item.CategoryName</a>
+                    }
+                    <a href="#about">關於我們</a>
+                </div>
+                <div class="box boxcontact">
+                    <a href="#faq">常見問題</a>
+                    <a href="@Url.Action("Contact" , "Home" , new {area = "" })">聯絡我們</a>
+                    <p>@company.ContactTel</p>
+                    <p>@company.ContactEmail</p>
+                    <div class="icofont">
+                        @if (!string.IsNullOrEmpty(company.FacebookUrl))
+                        {<a href="@company.FacebookUrl"><span class="icofont-facebook"></span></a>}
+                        @if (!string.IsNullOrEmpty(company.InstagramUrl))
+                        {<a href="@company.InstagramUrl"><span class="icofont-instagram"></span></a>}
+                        @if (!string.IsNullOrEmpty(company.LinkedinUrl))
+                        {<a href="@company.LinkedinUrl"><span class="icofont-linkedin"></span></a>}
+                        @if (!string.IsNullOrEmpty(company.SkypeUrl))
+                        {<a href="@company.SkypeUrl"><span class="icofont-skype"></span></a>}
+                        @if (!string.IsNullOrEmpty(company.TwitterUrl))
+                        {<a href="@company.TwitterUrl"><span class="icofont-twitter"></span></a>}
+                    </div>
+                </div>
+            </div>
+            <div class="copy">
+                <p>&copy; 2023 by REWEAR</p>
+            </div>
+        </footer>
+
+        <!-- 右側固定導航 -->
+        <div id="tool">
+            <a href=""><span class="icofont-arrow-up"></span></a>
+        </div>
+
+        <!-- Javascript -->
+        <script src="@Url.Content("~/lib/RewearFrontend/js/main.js")"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,117 @@
+@using CodeGenerator;
+@model CodeGenerator.CodeGeneratorModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutCodeGenerator";
+    using var codeService = new CodeGeneratorService();
+    var PropertyNoList = codeService.GetPropertyDropDownList(Model.ModelName , Model.ModelClassName , "z_meta");
+    var DropDownList = codeService.GetPropertyStringDropDownList(Model.ModelName , Model.ModelClassName , "z_meta");
+    var PropertyNameList = PropertyNoList;
+    PropertyNameList.Insert(0 , new SelectListItem() { Value = "" , Text = ""});
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-primary text-white">
+        <h5>ASP.Net Core View(網頁) 產生器</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ProjectName)
+                @Html.HiddenFor(model => model.AreaName)
+                @Html.HiddenFor(model => model.ControllerName)
+                @Html.HiddenFor(model => model.ViewName)
+                @Html.HiddenFor(model => model.TemplateName)
+                @Html.HiddenFor(model => model.LayoutName)
+                @Html.HiddenFor(model => model.ModelName)
+                @Html.HiddenFor(model => model.ModelNameSpace)
+                @Html.HiddenFor(model => model.ModelClassName)
+                @Html.HiddenFor(model => model.CardSize)
+                @Html.HiddenFor(model => model.ForceOverride)
+                @Html.HiddenFor(model => model.UseModel)
+                @Html.HiddenFor(model => model.UseCard)
+                @if (Model.TemplateName != "List")
+                {
+                    @Html.HiddenFor(model => model.DeleteNo)
+                    @Html.HiddenFor(model => model.DeleteName)
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DropDownColumns, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.ListBoxFor(model => model.DropDownColumns, DropDownList , new { @class = "form-control w-100" , style="height: 400px;" , multiple="multiple"})
+                            @Html.ValidationMessageFor(model => model.DropDownColumns, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DeleteNo, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.DeleteNo, PropertyNoList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DeleteNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.DeleteName, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.DeleteName, PropertyNameList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DeleteName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.SelectAllColumn, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.CheckBoxFor(model => model.SelectAllColumn, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SelectAllColumn, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div id="changeDisplayColumns">
+                        <div class="row form-group">
+                            @Html.LabelFor(model => model.DisplayColumns, htmlAttributes: new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.ListBoxFor(model => model.DisplayColumns, PropertyNoList , new { @class = "form-control w-100" , style="height: 400px;" , multiple="multiple"})
+                                @Html.ValidationMessageFor(model => model.DisplayColumns, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                }
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="float-start">
+                            <input type="submit" value="建立網頁(View)" class="btn btn-primary" onclick="return confirm('是否確定要執行?');"/>
+                        </div>
+                        <div class="float-end">
+                            @Html.ActionLink("返回上一頁", "Index", "CodeGenerator" , new {area = ""} , new { @class = "btn btn-success"})
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <h6 class="text-danger">複選功能可按下 Ctrl + 滑鼠左鍵操作。</h6>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    var chDisplayColumns = $('#changeDisplayColumns');
+    var ckSelectAllColumn = $('#SelectAllColumn');
+
+    chDisplayColumns.hide();
+
+    ckSelectAllColumn.on('click', function() {
+    if ($(this).is(':checked')) {
+      chDisplayColumns.hide();
+    } else {
+      chDisplayColumns.show();
+    }});
+</script>

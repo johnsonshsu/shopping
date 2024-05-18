@@ -1,0 +1,22 @@
+﻿@section styles {
+	<link href="@Url.Content("~/Plugins/Captcha/captcha.css")" rel="stylesheet" />
+}
+
+@section scriptsend {
+    <script src="@Url.Content("~/Plugins/Captcha/captcha.js")"></script>
+}
+
+<div class="row form-group">
+    <div class="control-label col-md-3 fw-bold">驗證碼</div>
+    <div class="control-label col-md-9">
+        <div class="captcha-code code dynamic-code float-left mr-2"></div>
+        <div class="captcha-reload float-left" role="button"><i class="ion-ios-loop-strong"></i></div>
+    </div>
+</div>
+<div class="row form-group">
+    <div class="control-label col-md-3"></div>
+    <div class="col-md-9">
+        <input type="text" class="form-control" id="captcha-input" required autocomplete="off" placeholder="請輸入驗證碼 ...">
+        <span id="errCaptcha"></span>
+    </div>
+</div>

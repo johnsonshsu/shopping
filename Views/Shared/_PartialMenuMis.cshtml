@@ -1,0 +1,69 @@
+<li>
+    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+        <i class="fs-4 bi-card-text"></i>
+        <span class="ms-1 d-none d-sm-inline fs-5">程式管理</span>
+        <i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("Init" , "Module" , new {area = "Mis"})" class="nav-link">
+                <i class="fs-4 bi-search" title="模組資料維護"></i>
+                <span class="d-none d-sm-inline">模組資料維護</span>
+            </a>
+        </li>
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("Init" , "Program" , new {area = "Mis"})" class="nav-link">
+                <i class="fs-4 bi-printer" title="程式資料維護"></i>
+                <span class="d-none d-sm-inline">程式資料維護</span>
+            </a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+        <i class="bi bi-book-fill"></i>
+        <span class="ms-2 d-none d-sm-inline fs-5">帳號管理</span>
+        <i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("Init" , "User" , new {area = "Mis"})" class="nav-link">
+                <i class="fs-4 bi-pencil-square" title="員工帳號維護"></i>
+                <span class="d-none d-sm-inline">員工帳號維護</span>
+            </a>
+        </li>
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("Init" , "Security" , new {area = "Mis"})" class="nav-link">
+                <i class="fs-4 bi-pencil-square" title="帳號權限設定"></i>
+                <span class="d-none d-sm-inline">帳號權限設定</span>
+            </a>
+        </li>
+    </ul>
+</li>
+<li>
+    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link text-white px-0 align-middle">
+        <i class="fs-4 bi-grid"></i>
+        <span class="ms-1 d-none d-sm-inline fs-5">基本資料</span>
+        <i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("Init" , "Role" , new {area = "Mis"})" class="nav-link">
+                <i class="fs-4 bi-pencil-square" title="角色資料維護"></i>
+                <span class="d-none d-sm-inline">角色資料維護</span>
+            </a>
+        </li>
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("Init" , "OrderStatus" , new {area = "Mis"})" class="nav-link">
+                <i class="fs-4 bi-pencil-square" title="訂單狀態維護"></i>
+                <span class="d-none d-sm-inline">訂單狀態維護</span>
+            </a>
+        </li>
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("Init" , "CodeBase" , new {area = "Mis"})" class="nav-link">
+                <i class="fs-4 bi-pencil-square" title="主檔資料維護"></i>
+                <span class="d-none d-sm-inline">主檔資料維護</span>
+            </a>
+        </li>
+    </ul>
+</li>

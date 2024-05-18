@@ -1,0 +1,108 @@
+@using CodeGenerator;
+@model CodeGenerator.CodeGeneratorModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutCodeGenerator";
+    using var codeService = new CodeGeneratorService();
+    List<SelectListItem> TableViewList = codeService.GetTableViewDropDownList(Model.ConnStringName,Model.CreateView);
+    string str_message = "";
+    if (Model.TableSelectType == "1")
+    {
+        str_message = "上方表格清單僅支援單選!!";
+    }
+    else
+    {
+        str_message = "使用 Ctrl + 滑鼠左鍵可以進行複選!!";
+    }
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-primary text-white">
+        <h5>ASP.Net Core DBContext (資料庫模型名稱) 產生器</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ConnStringName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ConnStringName, new { htmlAttributes = new { @class = "form-control" , @readonly="readonly"} })
+                        @Html.ValidationMessageFor(model => model.ConnStringName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.DBContextType, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.DBContextType, new { htmlAttributes = new { @class = "form-control" , @readonly="readonly"} })
+                        @Html.ValidationMessageFor(model => model.DBContextType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @if (Model.TableSelectType == "1")
+                {
+                    @Html.HiddenFor(model => model.SelectAll)
+                }
+                else
+                {
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.SelectAll, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.CheckBoxFor(model => model.SelectAll, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SelectAll, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+                <div class="row form-group">
+                    @if(Model.TableSelectType == "1")
+                    {
+                        @Html.LabelFor(model => model.TableViewName, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.TableViewName, TableViewList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TableViewName, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.LabelFor(model => model.TableViews, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.ListBoxFor(model => model.TableViews, TableViewList , new { @class = "form-control w-100" , style="height: 400px;" , multiple="multiple"})
+                            @Html.ValidationMessageFor(model => model.TableViews, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="float-start">
+                            <input type="submit" value="下一步" class="btn btn-primary"/>
+                        </div>
+                        <div class="float-end">
+                            @Html.ActionLink("返回上一頁", "Index", "CodeGenerator" , new {area = ""} , new { @class = "btn btn-success"})
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <h6 class="text-danger">備註：本功能僅適用在 SQL Server 資料庫中， @str_message</h6>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    var ckSelectAll = $('#SelectAll');
+    var tbleViews = $('#TableViews');
+
+    ckSelectAll.on('click', function() {
+    if ($(this).is(':checked')) {
+        tbleViews.attr('readonly', true)
+    } else {
+        tbleViews.attr('readonly', false)
+    }});
+</script>

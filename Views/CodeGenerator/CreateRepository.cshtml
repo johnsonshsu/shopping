@@ -1,0 +1,96 @@
+@using CodeGenerator;
+@model CodeGenerator.CodeGeneratorModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutCodeGenerator";
+    using var codeService = new CodeGeneratorService();
+    List<SelectListItem> ConnNameList = codeService.GetConnNameDropDownList();
+    var DBContextTypeList = new List<SelectListItem>();
+    var TableSelectTypeList = new List<SelectListItem>();
+    using var enumDBContextType = new EnumService<enDBContextType>();
+    DBContextTypeList = enumDBContextType.DropdownList();
+    TableSelectTypeList.Add(new SelectListItem() {Value = "1" , Text = "單選表格"});
+    TableSelectTypeList.Add(new SelectListItem() {Value = "2" , Text = "複選表格"});
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-primary text-white">
+        <h5>ASP.Net Core Repository (資料表 CRUD) 產生器</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ConnStringName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.ConnStringName, ConnNameList, new { @class = "form-control" , onchange="ConnNameChange();"})
+                        @Html.ValidationMessageFor(model => model.ConnStringName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.TableSelectType, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.TableSelectType, TableSelectTypeList, new { @class = "form-control" , onchange="ConnNameChange();"})
+                        @Html.ValidationMessageFor(model => model.TableSelectType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ForceOverride, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.CheckBoxFor(model => model.ForceOverride, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ForceOverride, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ConnectionString, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.TextAreaFor(model => model.ConnectionString, new { @class = "form-control w-100" ,rows="4" ,@readonly="readonly"})
+                        @Html.ValidationMessageFor(model => model.ConnectionString, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="float-start">
+                            <input type="submit" value="下一步" class="btn btn-primary"/>
+                        </div>
+                        <div class="float-end">
+                            @Html.ActionLink("返回上一頁", "Index", "CodeGenerator" , new {area = ""} , new { @class = "btn btn-success"})
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <h6 class="text-danger">備註：本功能僅適用在 SQL Server 資料庫中!!</h6>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function ConnNameChange() {
+        var data = document.getElementById('ConnStringName').value;
+        var connString = document.getElementById('ConnectionString');
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: '@Url.Action( "GetConnString" , "CodeGenerator", new { area = ""})',
+            data: { "id": data },
+            dataType: "json",
+            success: function (connValue) {
+                connString.value = connValue;
+            },
+            error: function (result) {
+                connString.value = "查無連線字串!!";
+            }
+        });
+    }
+</script>

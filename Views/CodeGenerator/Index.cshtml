@@ -1,0 +1,40 @@
+@using CodeGenerator;
+@model CodeGenerator.CodeGeneratorModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutCodeGenerator";
+    List<SelectListItem> TypeList = new List<SelectListItem>();
+    using (EnumService<enGeneratorType> enumGeneratorType = new EnumService<enGeneratorType>())
+    {
+        TypeList = enumGeneratorType.DropdownList();
+    }
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-primary text-white">
+        <h5>ASP.Net Core 程式碼產生器</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.GeneratorType, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.GeneratorType, TypeList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GeneratorType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <input type="submit" value="下一步" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

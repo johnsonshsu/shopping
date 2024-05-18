@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutLite";
+    string str_area = "";
+    string str_controller = "Home";
+    string str_action = "Index";
+    string str_name = "返回登入頁";
+    if (SessionService.StringValue1 == "WebLogin")
+    {
+        str_controller = "Login";
+        str_name = "返回登入頁";
+    }
+    if (SessionService.StringValue1 == "ShopIndex")
+    {
+        str_controller = "Home";
+        str_name = "繼續購物";
+    }
+}
+
+<div class="alert alert-success my-2 py-2">
+    <h2>訊息提示</h2>
+    <h5 class="text-danger">
+        @Html.Raw(SessionService.MessageText)
+    </h5>
+    <br />
+    <div class="btnContainer">
+        <a name="login" href="@Url.Action(str_action , str_controller , new {area = str_area})" class="btn btn-success">
+            @str_name
+        </a>
+    </div>
+</div>>

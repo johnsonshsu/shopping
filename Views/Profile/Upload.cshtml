@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = ActionService.ViewActionName;
+    Layout = "_LayoutLite";
+}
+
+<div class="card card-size-medium mt-5">
+    <div class="card-header bg-secondary text-white">
+        <div class="pt-2 px-2">
+            <div class="float-start">
+                <h4>@ActionService.ViewActionName</h4>
+            </div>
+            <div class="float-end">
+                <h4>@ActionService.ViewPrgInfo</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-2">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-10">
+                    <input type="file" id="file" name="file" class="form-control" />
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary">上傳檔案</button>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ActionLink("返回前一頁", "Index", "Profile", new { area = "" }, new { @class = "btn btn-success" })
+            </div>
+        </div>
+    </div>
+</div>

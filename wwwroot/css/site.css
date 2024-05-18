@@ -1,0 +1,137 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.sidenav a {
+  color: white !important;
+}
+
+.sidenav a:hover,
+.sidesubnav a:hover {
+  color: orange !important;
+}
+
+.sidesubnav a {
+  color: yellow !important;
+}
+
+.sidesubnav {
+  width: 100%;
+}
+
+.card-size-small {
+  max-width: 576px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin: auto;
+}
+
+.card-size-medium {
+  max-width: 768px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin: auto;
+}
+
+.card-size-large {
+  max-width: 992px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin: auto;
+}
+
+.card-size-max {
+  max-width: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 4px !important;
+}
+
+.table th {
+  font-weight: bold;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.table td {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.table-wrap {
+  width: 100%;
+}
+
+.control-label {
+  font-weight: bold;
+  padding-top: 8px;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+.page-info {
+  font-size: large;
+  font-weight: bold;
+}
+
+.pagination-container {
+  display: flex;
+  flex: 1;
+}
+
+.pagination {
+  display: flex;
+  flex: 1;
+  list-style: none;
+  padding: 0;
+  gap: 0.625rem;
+  font-size: large;
+  font-weight: bold;
+}
+
+.page-item,
+.page-link {
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PagedList-pageCountAndLocation {
+  justify-content: start;
+  order: -1;
+  flex: 1;
+}

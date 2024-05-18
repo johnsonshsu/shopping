@@ -1,0 +1,17 @@
+@using CodeGenerator;
+@{
+    ViewData["Title"] = "Message";
+    Layout = "_LayoutCodeGenerator";
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-warning text-black">
+        <h5>訊息提示</h5>
+    </div>
+    <div class="card-body">
+        @Html.Raw(CodeSessionService.MessageText)
+        <br>
+        <hr>
+        @Html.ActionLink("返回產生器首頁", "Index", "CodeGenerator", new { area = "" }, new { @class = "btn btn-success" })
+    </div>
+</div>

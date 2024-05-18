@@ -1,0 +1,79 @@
+﻿@{
+    using var companys = new z_sqlCompanys();
+    using var questions = new z_sqlQuestions();
+    var company = companys.GetDefaultCompany();
+    var questionList = questions.GetDataList();
+}
+
+<!-- Banner -->
+<section class="banner">
+    <h2 style="font-family: Kalam">REWEAR</h2>
+    <h3>Second-Hand Clothes</h3>
+    <h4>讓時尚回歸環保&nbsp;&nbsp;&nbsp;讓衣櫥更有故事</h4>
+    <a href="@Url.Action("Index" , "Category" , new {area = "" , category = ""})" style="font-family: Kalam">
+        開始購物</a>
+</section>
+
+<!-- 女裝 -->
+<section class="women" id="women">
+    <div class="women_main">
+        <div class="women_img"></div>
+        <div class="women_text">
+            <h2>WOMEN</h2>
+            <p>漂亮不是選擇，而是習慣</p>
+            <p>選擇我們的女裝，練就美麗習慣</p>
+            <a href="@Url.Action("Index" , "Category" , new {area = "" , id = "Woman"})"
+                style="font-family: Kalam">開始購物</a>
+        </div>
+    </div>
+</section>
+
+<!-- 男裝 -->
+<section class="men" id="men">
+    <div class="men_main">
+        <div class="men_text">
+            <h2>MEN</h2>
+            <p>簡約、舒適、時尚</p>
+            <p>穿出你的品味和風範</p>
+            <a href="@Url.Action("Index" , "Category" , new {area = "" , id = "Man"})"
+                style="font-family: Kalam">開始購物</a>
+        </div>
+        <div class="men_img"></div>
+    </div>
+</section>
+
+<!-- 關於我們 -->
+<section class="about" id="about">
+    @Html.Raw(company.AboutusText)
+</section>
+
+<!-- 常見問題 -->
+<section class="faq" id="faq">
+    <div class="faq_main">
+        <h2 style="font-family: Kalam">常見問題</h2>
+        @{
+            int i = 0;
+            string str_id = "";
+            foreach (var item in questionList)
+            {
+                i++;
+                str_id = $"qa{i}";
+                <p class="q1" data-bs-toggle="collapse" data-bs-target="#@str_id">
+                    @item.QuestionText
+                </p>
+                <p class="collapse a1" id="@str_id">
+                    @item.AnswerText
+                </p>
+            }
+        }
+        <a href="@Url.Action("Question" , "Home" , new {area = ""})" class="btn btn-secondary mt-2 ms-2 btn-lg">
+            更多常見問題 ...
+        </a>
+    </div>
+</section>
+
+@section Styles
+{
+    <!-- 依需要引用不同樣式表 -->
+    <link rel="stylesheet" href="@Url.Content("~/lib/RewearFrontend/css/style.css")" />
+}

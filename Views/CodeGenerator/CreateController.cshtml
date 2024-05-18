@@ -1,0 +1,132 @@
+@using CodeGenerator;
+@model CodeGenerator.CodeGeneratorModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutCodeGenerator";
+    using var codeService = new  CodeGeneratorService();
+    var TemplateList = new List<SelectListItem>();
+    List<SelectListItem> AreaList = codeService.GetAreaDropDownList();
+    var ModelList = codeService.GetTableModelDropDownList();
+    using var enumViewTemplate = new EnumService<enControllerTemplate>();
+    TemplateList = enumViewTemplate.DropdownList();
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-primary text-white">
+        <h5>ASP.Net Core Controller(控制器) 產生器</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.AreaName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.AreaName, AreaList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AreaName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ControllerName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ControllerName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                 <div class="row form-group">
+                    @Html.LabelFor(model => model.TemplateName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.TemplateName, TemplateList, new { @class = "form-control" , onchange="TemplateChange();"})
+                        @Html.ValidationMessageFor(model => model.TemplateName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.UseModel, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.CheckBoxFor(model => model.UseModel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UseModel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div id="changeModelName">
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.ModelName, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.ModelName, ModelList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ModelName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.BaseController, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.CheckBoxFor(model => model.BaseController, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BaseController, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ForceOverride, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.CheckBoxFor(model => model.ForceOverride, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ForceOverride, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="float-start">
+                            <input type="submit" value="建立控制器" class="btn btn-primary" onclick="return confirm('是否確定要執行?');"/>
+                        </div>
+                        <div class="float-end">
+                            @Html.ActionLink("返回上一頁", "Index", "CodeGenerator" , new {area = ""} , new { @class = "btn btn-success"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    var form = $('#CodeForm');
+    var chModelName = $('#changeModelName');
+    var ckUseModel = $('#UseModel');
+
+    chModelName.hide();
+
+    ckUseModel.on('click', function() {
+    if($(this).is(':checked')) {
+      chModelName.show();
+      chModelName.find('input').attr('required', true);
+    } else {
+      chModelName.hide();
+      chModelName.find('input').attr('required', false);
+    }});
+
+    function TemplateChange() {
+        var data = document.getElementById('TemplateName').value;
+        var useModel = document.getElementById('UseModel');
+        var modelName = document.getElementById('ModelName');
+        if (data == 'Form') {
+            chModelName.show();
+            chModelName.find('input').attr('required', true);
+            ckUseModel.value = "true";
+            useModel.checked = true;
+        }
+        else {
+            chModelName.hide();
+            chModelName.find('input').attr('required', false);
+            useModel.checked = false;
+            modelName.value = "";
+        }
+    }
+</script>

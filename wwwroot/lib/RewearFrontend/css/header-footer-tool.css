@@ -1,0 +1,446 @@
+/* html{
+    scroll-padding-top: 150px;
+} */
+
+body {
+    color: rgba(78, 74, 66, 0.85);
+    text-align: center;
+    font-family: 'Gudea', '微軟正黑體', cursive, sans-serif;
+    box-sizing: border-box;
+    font-size: 16px;
+    /* user-select: none; */
+    background: rgba(235, 235, 235, 1);
+}
+
+body a {
+    color: rgba(235, 235, 235, 0.85);
+}
+
+/* 頁首 */
+#header {
+    height: 100px;
+    width: 100%;
+    position: relative;
+    z-index: 100000;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav {
+    font-weight: bold;
+    height: 100px;
+    width: 90%;
+    line-height: 100px;
+    /* border: 1px solid #000; */
+    background: #424B54;
+    margin: auto;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav h1 {
+    width: 250px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 70px;
+    background: url(../images/app/logo-2.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-indent: 1000px;
+    overflow: hidden;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav h1 a {
+    display: block;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav .subject {
+    height: 100px;
+    width: 100%;
+    font-family: 'Gudea', sans-serif;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav .subject .navbar {
+    height: 100px;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav .navbar-bg {
+    background: #424B54;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav .btn-menu {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    margin-right: 10px;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav .icofont-menu {
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav .list {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 22px;
+    background: #424B54;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav .subject ul li {
+    margin: 0 40px;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#header nav .subject ul li a:hover {
+    color: rgb(255, 255, 255);
+    transition: all .3s;
+}
+
+/* 下邊功能 */
+#function {
+    width: 100%;
+    margin: auto;
+    height: 50px;
+    padding: 5px;
+    background: rgba(235, 235, 235, 1);
+}
+
+#function .box{
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* 購物車 */
+#function .cart span {
+    color: rgba(78, 74, 66, 0.85);
+    font-size: 35px;
+    height: 50px;
+    line-height: 50px;
+    /* margin-right: 40px; */
+}
+
+/* 登入 */
+#function .login {
+    color: rgba(78, 74, 66, 0.85);
+    font-size: 25px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 20px;
+    /* position: relative; */
+}
+
+#function .submenu {
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.5;
+    width: 150px;
+    background: rgba(235, 235, 235, 1);
+    box-sizing: border-box;
+    position: absolute;
+    right: 140px;
+    top: 155px;
+    border-radius: 0 0 5px 5px;
+    /* box-shadow: 0px 0px 3px #c8c8c8; */
+    /* border: 1px solid #000; */
+    /* 不生成盒子 */
+    display: none;
+}
+
+#function .submenu ul {
+    padding: 0;
+}
+
+#function .submenu a {
+    color: rgba(78, 74, 66, 0.85);
+    border-bottom: 1px solid rgba(78, 74, 66, 0.85);
+    display: block;
+    padding: 15px 10px;
+    /* border-radius: 0 0 5px 5px; */
+}
+
+#function .submenu li:last-child a{
+    border: none;
+}
+
+#function .login:hover,
+#function .cart a span:hover,
+#function .submenu a:hover {
+    color: #BCB99D;
+    transition: all .3s;
+}
+
+#function div.a_login:hover div.submenu {
+    /* 生成盒子 */
+    display: block;
+    /* border: 1px solid #000; */
+}
+
+
+
+/* 搜索欄 */
+#function .search form {
+    /* margin-left: 20px; */
+    height: 40px;
+    border-bottom: 2px solid rgba(78, 74, 66, 0.85);
+}
+
+#function .search span {
+    color: rgba(78, 74, 66, 0.85);
+    font-size: 25px;
+    border: none;
+    width: 45px;
+    height: 45px;
+    line-height: 50px;
+}
+
+#function .search .searchBox input {
+    text-indent: 15px;
+    background-color: transparent;
+    width: 200px;
+    height: 30px;
+    border: none;
+    margin-top: 10px;
+    font-size: 22px;
+    color: rgba(78, 74, 66, 0.85);
+}
+
+#function .cart span:hover {
+    color: #c8c8c8;
+    transition: all .3s;
+}
+
+/* 內容 */
+#container {
+    width: 100%;
+    /* height: 5000px; */
+}
+
+/* #container::before {
+    content: "";
+    display: block;
+    height: 150px;
+} */
+
+
+/* 頁尾 */
+#footer {
+    width: 90%;
+    margin: auto;
+    height: 350px;
+    background: #424B54;
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Gudea', sans-serif;
+}
+
+#footer .flbox {
+    /* margin-top: 40px; */
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    height: 300px;
+}
+
+#footer .flbox .box {
+    width: calc(100%/3);
+    font-size: 0;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#footer img {
+    width: 65%;
+}
+
+#footer .flbox .v-line {
+    border-left: 2px solid rgba(235, 235, 235, 0.85);
+    height: 80%;
+}
+
+#footer a {
+    font-size: 12px;
+}
+
+#footer .boxabout{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#footer .boxabout a {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#footer .boxcontact{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#footer .boxcontact a:first-of-type{
+    margin-bottom: 15px;
+}
+
+#footer .boxcontact a {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#footer .boxcontact p {
+    font-size: 16px;
+    color: rgba(235, 235, 235, 0.85);
+    margin: 5px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+#footer .boxcontact .icofont a {
+    display: inline-block;
+    margin: 30px 10px;
+    color: rgba(235, 235, 235, 0.85);
+}
+
+#footer .boxcontact .icofont a:hover {
+    color: #fff;
+    transition: all .3s;
+}
+
+#footer a:hover {
+    color: #fff;
+    transition: all .3s;
+}
+
+#footer .copy p {
+    color: rgba(235, 235, 235, 0.85);
+}
+
+/* 右側固定導航 */
+#tool {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    position: fixed;
+    bottom: 10px;
+    right: 30px;
+    background: rgba(78, 74, 66, 0.85);
+    opacity: .7;
+    z-index: 1;
+}
+
+#tool span {
+    font-size: 45px;
+    color: #fff;
+}
+
+#tool:hover {
+    opacity: 1;
+    transition: all .3s;
+}
+
+
+/* 行動裝置 */
+
+@media screen and (max-width:767px) {
+
+    /* 頁首 */
+
+    #header nav,#header .function,#footer {
+        width: 100%;
+    }
+
+    #function .box{
+        width: 100%;
+    }
+
+    /* 購物車 */
+    #function .cart span {
+        margin-right: 0px;
+    }
+
+    /* 登入 */
+    #function .login {
+        margin-right: 10px;
+    }
+
+    #function .submenu {
+        right: 60px;
+    }
+
+    /* 搜索欄 */
+    #function .search form {
+        margin-left: 0px;
+    }
+
+    #function .search .searchBox input {
+        width: 150px;
+    }
+
+    /* 頁尾 */
+    #footer {
+        height: 750px;
+        padding-top: 70px;
+    }
+
+    #footer .flbox {
+        margin-bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        align-content: stretch;
+        height: 500px;
+    }
+
+    #footer .flbox .box {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #footer img {
+        width: 50%;
+    }
+
+    #footer .flbox .v-line {
+        border: none;
+        border-bottom: 2px solid rgba(235, 235, 235, 0.85);
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    #footer .boxabout a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    #footer .boxcontact a {
+        display: block;
+    }
+
+    #footer .boxcontact p {
+        font-size: 16px;
+    }
+
+    #footer .boxcontact .icofont a {
+        display: inline-block;
+    }
+
+
+}

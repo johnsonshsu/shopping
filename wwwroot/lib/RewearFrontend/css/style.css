@@ -1,0 +1,747 @@
+/* 內容 */
+
+/* banner */
+#container .banner {
+  background-image: url(../images/banner1-1.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  width: 90%;
+  height: 550px;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+#container .banner h2 {
+  font-size: 90px;
+  margin-bottom: 25px;
+}
+
+#container .banner h3 {
+  font-size: 38px;
+  margin-top: -40px;
+  font-family: "Ms Madi", cursive;
+  letter-spacing: 5px;
+}
+
+#container .banner h4 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+#container .banner a {
+  border: 2px solid #fff;
+  width: 150px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 26px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+#container .banner a:hover {
+  background: #fff;
+  color: #424b54;
+  transition: 0.3s;
+}
+
+/* 女裝 */
+#container .women {
+  /* margin-top: 100px; */
+  width: 100%;
+  height: 600px;
+  /* background: #bcb99d89; */
+  /* border: 1px solid #000; */
+}
+
+#container .women .women_main {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  /* border: 1px solid #000; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+}
+
+#container .women .women_main .women_img {
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/women_index.png);
+  /* border: 1px solid #000; */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#container .women .women_main .women_text {
+  width: 50%;
+  height: 100%;
+  padding: 40px 60px;
+  display: flex;
+  background: #bcb99d;
+  /* border: 1px solid #000; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  margin: 0;
+  color: #fff;
+  border: #bcb99d 35px solid;
+  box-shadow: inset 0px 0px 0px 2px #ededed;
+  text-align: center;
+}
+
+#container .women .women_main .women_text h2 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  /* font-family: 'Gudea', sans-serif; */
+}
+
+#container .women .women_main .women_text h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 2px;
+  background: #fff;
+  margin: auto;
+  margin-top: 5px;
+}
+
+#container .women .women_main .women_text p {
+  margin-bottom: 10px;
+  font-size: 24px;
+  /* font-family: 'Ms Madi', cursive;
+  letter-spacing: 5px; */
+}
+
+#container .women .women_main .women_text a {
+  /* border: 1px solid #000; */
+  display: inline-block;
+  color: #8f8a5e;
+  /* border-radius: 5px; */
+  margin: 20px 0;
+  font-size: 24px;
+  background: #ededed;
+  /* padding: 10px; */
+  width: 150px;
+  height: 45px;
+  line-height: 45px;
+  /* font-weight: bold; */
+}
+
+#container .women .women_main .women_text a:hover {
+  background: #fff;
+  transition: all 0.7s;
+}
+
+/* 男裝 */
+#container .men {
+  /* margin-top: 100px; */
+  width: 100%;
+  height: 600px;
+  /* background: #7a9cb088; */
+  /* border: 1px solid #000; */
+}
+
+#container .men .men_main {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  /* border: 1px solid #000; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+}
+
+#container .men .men_main .men_img {
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/men_index.png);
+  /* border: 1px solid #000; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: 0 0; */
+  /* background-attachment: fixed; */
+}
+
+#container .men .men_main .men_text {
+  width: 50%;
+  height: 100%;
+  padding: 40px 60px;
+  display: flex;
+  background: #7a9cb0;
+  /* border: 1px solid #000; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  margin: 0;
+  color: #fff;
+  border: #7a9cb0 35px solid;
+  box-shadow: inset 0px 0px 0px 2px #ededed;
+  text-align: center;
+}
+
+#container .men .men_main .men_text h2 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  /* font-family: 'Gudea', sans-serif; */
+}
+
+#container .men .men_main .men_text h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 2px;
+  background: #fff;
+  margin: auto;
+  margin-top: 5px;
+}
+
+#container .men .men_main .men_text p {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+#container .men .men_main .men_text a {
+  /* border: 1px solid #000; */
+  display: inline-block;
+  color: #5b7787;
+  /* border-radius: 5px; */
+  margin: 20px 0;
+  font-size: 24px;
+  background: #ededed;
+  /* padding: 10px; */
+  width: 150px;
+  height: 45px;
+  line-height: 45px;
+  /* font-weight: bold; */
+}
+
+#container .men .men_main .men_text a:hover {
+  background: #fff;
+  transition: all 0.7s;
+}
+
+/* 關於我們 */
+#container .about {
+  /* height: 550px; */
+  width: 90%;
+  margin: auto;
+  padding: 150px 0px;
+  /* display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: stretch; */
+  /* border: 1px solid #000; */
+  background: url(../images/about_index.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  /* background: rgba(235, 235, 235, 1); */
+  color: rgba(235, 235, 235, 1);
+}
+
+#container .about .about_main {
+  width: 70%;
+  margin: auto;
+  background: #424b54;
+  border: 10px solid #424b54;
+  box-shadow: inset 0px 0px 0px 3px rgba(235, 235, 235, 0.85);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#container .about .about_text {
+  /* border: 1px solid #000; */
+  margin-bottom: 40px;
+}
+
+#container .about .about_text h2 {
+  font-size: 60px;
+  margin-bottom: 25px;
+}
+
+#container .about .about_text p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+#container .about .about_icon {
+  /* border: 1px solid #000; */
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+}
+
+#container .about .about_icon .box {
+  width: 250px;
+  font-size: 20px;
+  /* border: 1px solid #000; */
+}
+
+#container .about .about_icon .box i {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+/* 常見問題 */
+#faq {
+  width: 90%;
+  /* height: 80vh; */
+  margin: auto;
+  margin-top: 50px;
+  /* border: 1px solid #000; */
+  /* background: #d5d2b1; */
+  padding: 20px;
+}
+
+#faq .faq_main {
+  width: 70%;
+  margin: auto;
+  /* border: 1px solid #000; */
+  text-align: left;
+}
+
+#faq .faq_main h2 {
+  font-size: 60px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#faq .faq_main .q1 {
+  margin: 10px;
+  padding: 20px 0;
+  /* border-top: 2px solid rgba(78, 74, 66, 0.85); */
+  border-bottom: 2px solid rgba(78, 74, 66, 0.85);
+  position: relative;
+  font-size: large;
+  font-weight: bold;
+  color: maroon;
+}
+
+#faq .faq_main .q1::after {
+  content: "▼";
+  font-size: 24px;
+  position: absolute;
+  right: 5px;
+  top: 22px;
+}
+
+#faq .faq_main .qabox {
+  padding: 0;
+}
+
+#faq .faq_main .a1 {
+  margin: 10px;
+  margin-top: 5px;
+  padding: 5px 0 20px 0;
+  font-size: large;
+}
+
+#faq .btn {
+  font-size: medium;
+  height: 40px;
+  line-height: 38px;
+}
+
+/* 聯繫我們 */
+#contact {
+  width: 90%;
+  /* height: 900px; */
+  margin: auto;
+  /* border: 1px solid #000; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #687685;
+  padding: 30px 20px;
+}
+
+#contact h2 {
+  font-size: 60px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #fff;
+}
+
+.form {
+  width: 70%;
+  padding: 20px 10px;
+  border-radius: 10px;
+  /* border: 1px solid #ccc; */
+  /* background: rgb(247, 247, 247); */
+  /* box-shadow: 0px 0px 11px #ccc; */
+}
+
+.form_main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  /* border: 1px solid #000; */
+}
+
+.form_left {
+  width: 50%;
+  height: 200px;
+  /* height: 150px; */
+  /* border: 1px solid #000; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form_right {
+  width: 50%;
+  height: 200px;
+  /* border: 1px solid #000; */
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.inputContainer {
+  position: relative;
+  height: 45px;
+  width: 90%;
+  /* margin-bottom: 17px; */
+}
+
+.input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  /* border-radius: 7px; */
+  font-size: 16px;
+  padding: 0 20px;
+  outline: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+textarea.input {
+  height: 200px;
+  padding: 20px;
+}
+
+.label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 0 4px;
+  background: #687685;
+  /* color: #cccccc; */
+  font-size: 16px;
+  transition: 0.5s;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+::placeholder {
+  color: transparent;
+}
+
+.submitBtn {
+  display: block;
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #5b7787;
+  font-size: 20px;
+  margin: auto;
+  margin-top: 70px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.submitBtn:hover {
+  background: rgba(255, 255, 255, 1);
+  transition: 0.3s;
+}
+
+.input:focus + .label {
+  top: -7px;
+  left: 3px;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.input:focus {
+  border: 3px solid rgba(255, 255, 255, 1) !important;
+}
+
+.input:not(:placeholder-shown) + .label {
+  top: -7px;
+  left: 3px;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* 行動裝置 */
+@media screen and (max-width: 767px) {
+  /* banner */
+  #container .banner {
+    background-attachment: unset;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 0;
+  }
+
+  #container .banner h2 {
+    font-size: 70px;
+    margin-bottom: 25px;
+  }
+
+  #container .banner h3 {
+    font-size: 22px;
+  }
+
+  #container .banner h4 {
+    font-size: 20px;
+  }
+
+  #container .banner a {
+    width: 130px;
+    font-size: 26px;
+  }
+
+  /* women */
+  #container .women {
+    width: 100%;
+    height: 1000px;
+    background: transparent;
+    /* border: 1px solid #000; */
+  }
+
+  #container .women .women_main {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: stretch;
+  }
+
+  #container .women .women_main .women_img {
+    width: 100%;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+    background-image: url(../images/women_index.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* border: 1px solid #000; */
+  }
+
+  #container .women .women_main .women_text {
+    width: 100%;
+    height: 500px;
+  }
+
+  #container .women .women_main .women_text h2 {
+    font-size: 60px;
+  }
+
+  #container .women .women_main .women_text p {
+    font-size: 20px;
+  }
+
+  /* men */
+  #container .men {
+    width: 100%;
+    height: 1000px;
+    background: transparent;
+    /* border: 1px solid #000; */
+  }
+
+  #container .men .men_main {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: stretch;
+  }
+
+  #container .men .men_main .men_img {
+    width: 100%;
+    height: 500px;
+    float: left;
+  }
+
+  #container .men .men_main .men_text {
+    width: 100%;
+    height: 500px;
+    float: right;
+  }
+
+  #container .men .men_main .men_text h2 {
+    font-size: 60px;
+  }
+
+  #container .men .men_main .men_text p {
+    font-size: 20px;
+  }
+
+  /* 關於我們 */
+  #container .about {
+    width: 100%;
+    padding: 0px 0px;
+    background: none;
+    margin-top: 0;
+    height: 500px;
+  }
+
+  #container .about .about_main {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    background: #424b54;
+    border: 10px solid #424b54;
+    box-shadow: inset 0px 0px 0px 3px rgba(235, 235, 235, 0.85);
+    padding: 30px;
+  }
+
+  #container .about .about_text {
+    /* border: 1px solid #000; */
+    margin-bottom: 40px;
+  }
+
+  #container .about .about_text h2 {
+    font-size: 60px;
+    margin-bottom: 25px;
+  }
+
+  #container .about .about_text p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  #container .about .about_icon {
+    /* border: 1px solid #000; */
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: stretch;
+  }
+
+  #container .about .about_icon .box {
+    width: 250px;
+    font-size: 20px;
+    /* border: 1px solid #000; */
+  }
+
+  #container .about .about_icon .box i {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  /* 常見問題 */
+  #faq {
+    width: 100%;
+  }
+
+  #faq .faq_main {
+    width: 90%;
+    font-size: 18px;
+  }
+
+  #faq .faq_main h2 {
+    font-size: 60px;
+  }
+
+  #faq .faq_main .q1::after {
+    content: "▼";
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+    top: 22px;
+  }
+
+  /* 聯繫我們 */
+  #contact {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .form {
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0px;
+  }
+
+  .form_main {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form_left {
+    width: 100%;
+  }
+
+  .form_right {
+    width: 100%;
+    height: 250px;
+  }
+
+  .inputContainer {
+    margin: 10px;
+  }
+
+  .submitBtn {
+    margin-top: 5px;
+  }
+}

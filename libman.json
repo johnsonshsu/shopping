@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "bootstrap@5.3.3",
+      "destination": "wwwroot/lib/bootstrap"
+    },
+    {
+      "library": "bootstrap-icons@1.11.3",
+      "destination": "wwwroot/lib/bootstrap-icons"
+    },
+    {
+      "library": "Chart.js@4.4.1",
+      "destination": "wwwroot/lib/Chart.js"
+    },
+    {
+      "library": "chartjs-plugin-datalabels@2.2.0",
+      "destination": "wwwroot/lib/Chart.js.datalabels"
+    },
+    {
+      "library": "ckeditor@4.20.0",
+      "destination": "wwwroot/lib/ckeditor"
+    },
+    {
+      "library": "font-awesome@5.15.4",
+      "destination": "wwwroot/lib/font-awesome"
+    },
+    {
+      "library": "flag-icons@7.2.1",
+      "destination": "wwwroot/lib/flag-icons"
+    },
+    {
+      "library": "jquery@3.7.1",
+      "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "jqueryui@1.13.2",
+      "destination": "wwwroot/lib/jqueryui"
+    },
+    {
+      "library": "jquery-ui-bootstrap@0.5pre",
+      "destination": "wwwroot/lib/jquery-ui-bootstrap"
+    },
+    {
+      "library": "moment.js@2.30.1",
+      "destination": "wwwroot/lib/moment.js"
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/lib/sweetalert"
+    },
+    {
+      "library": "tempus-dominus@6.7.13",
+      "destination": "wwwroot/lib/tempus-dominus"
+    },
+    {
+      "library": "toastr.js@2.1.4",
+      "destination": "wwwroot/lib/toastr.js"
+    }
+  ]
+}

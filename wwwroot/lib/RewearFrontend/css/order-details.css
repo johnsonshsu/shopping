@@ -1,0 +1,243 @@
+/*  orderDetails */
+#container {
+    width: 100%;
+    margin: 0px auto;
+    background-color: rgba(235, 235, 235, 0.85);
+    margin-top: 5px;
+}
+
+#orderDetails,
+#orderInfo {
+    width: 90%;
+    margin: auto;
+    background-color: #fafafa;
+    padding: 20px 0;
+}
+
+#orderDetails .form {
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+}
+
+/* 上面 list */
+
+#orderDetails .list h2 {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #687685;
+    color: #687685;
+}
+
+#orderDetails .list .table {
+    margin-top: 30px;
+    margin-bottom: 0;
+    /* width: 100%; */
+    /* border: 1px solid #666; */
+}
+
+#orderDetails .list thead th {
+    background: #687685 none repeat scroll 0 0;
+    color: #fff;
+}
+
+#orderDetails .list thead th {
+    border: 1px solid #ccc !important;
+    padding: 0 !important;
+    text-align: center;
+    font-size: 15px;
+    height: 65px;
+    line-height: 65px;
+    text-transform: uppercase;
+}
+
+#orderDetails .list thead .product-thumbnail {
+    width: 10%
+}
+
+#orderDetails .list thead .product-name {
+    width: 40%;
+}
+
+#orderDetails .list thead .product-price {
+    width: 10%
+}
+
+#orderDetails .list thead .product-quantity {
+    width: 20%
+}
+
+#orderDetails .list thead .product-subtotal {
+    width: 10%
+}
+
+#orderDetails .list tbody td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#orderDetails .list tbody .item-img {
+    padding: 5px;
+}
+
+#orderDetails .list tbody .item-img img {
+    height: 100px;
+    width: 90px;
+}
+
+#orderDetails .list tbody tr {
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+#orderDetails .list tbody tr:hover {
+    background: #f6f6f7 none repeat scroll 0 0
+}
+
+/* 下面 amount */
+
+#orderDetails .amount .totalContainer {
+    /* border: 1px solid #e5e5e5; */
+    padding: 25px;
+    margin-top: -20px;
+    margin-bottom: -30px;
+}
+
+#orderDetails .amount .totalContainer p{
+    margin: 7px;
+}
+
+#orderDetails .amount .subtotal>p {
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#orderDetails .amount .subtotal p span {
+    float: right;
+}
+
+#orderDetails .amount .total>p {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#orderDetails .amount .total p span {
+    float: right;
+    font-family: lato;
+}
+
+/* orderInfo */
+
+#orderInfo .form {
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+    /* border: #ccc 1px solid; */
+}
+
+#orderInfo .row {
+    margin: auto;
+}
+
+#orderInfo form h2 {
+    text-align: center;
+    width: 100%;
+    color: #687685;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #687685;
+}
+
+#orderInfo form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #687685;
+    /* border-bottom: 3px solid #687685; */
+}
+
+.textleft{
+    text-align: left;
+}
+
+#orderInfo form .orderPart,
+#orderInfo form .payInfo,
+#orderInfo form .receiveInfo {
+    /* width: 90%; */
+    /* color: #687685; */
+    margin: 30px auto;
+    padding: 30px;
+    border: 1.5px solid #ccc;
+    /* box-shadow: 7px 5px 5px #687685; */
+    box-shadow: 0px 0px 11px #ccc;
+    /* background-color: #ccc; */
+}
+
+#orderInfo form .btnContainer {
+    margin: 20px auto;
+    text-align: center;
+    /* border: #687685 1px solid; */
+}
+
+#orderInfo form .backBtn {
+    /* width: 120px; */
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    color: #687685;
+    background-color: #fff;
+    /* border-radius: 7px; */
+    display: block;
+    border: #687685 1px solid;
+    /* margin: 0px 50px 40px 50px; */
+}
+
+#orderInfo form .cancelBtn {
+    /* width: 120px; */
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #687685;
+    /* border-radius: 7px; */
+    display: block;
+    color: #fff;
+    border: #687685 1px solid;
+    /* margin: 0px 50px; */
+}
+
+#orderInfo form .backBtn:hover {
+    background-color: #687685;
+    color: #fff;
+    transition: .3s;
+}
+
+#orderInfo form .cancelBtn:hover {
+    background-color: #7d90a5;
+    transition: .3s;
+}
+
+#orderInfo form .backBtn a {
+    display: block;
+}
+
+#orderInfo form .cancelBtn a {
+    display: block;
+}
+
+#orderInfo form a:hover {
+    color: #fff;
+}
+
+@media screen and (max-width:767px){
+    #orderDetails,#orderInfo{
+        width: 100%;
+    }
+}

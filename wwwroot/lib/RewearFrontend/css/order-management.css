@@ -1,0 +1,95 @@
+:root {
+    --primaryColor: #687685;
+}
+
+/* body,
+#header {
+    background-color: rgba(235, 235, 235, 0.85);
+} */
+
+#container {
+    width: 100%;
+    /* padding: 40px; */
+    margin: 00px auto;
+    background-color: rgba(235, 235, 235, 0.85);
+    margin-top: 5px;
+}
+
+#orderManagement {
+    width: 90%;
+    margin: auto;
+    background-color: #fafafa;
+    padding: 20px 0;
+}
+
+#orderManagement form {
+    text-align: center;
+}
+
+#orderManagement h1 {
+    /* color: #4F6D7A; */
+    color: var(--primaryColor);
+    padding-top: 30px;
+}
+
+#orderManagement .table {
+    margin: auto;
+    width: 80%;
+    margin-top: 20px;
+}
+
+#orderManagement .table thead th {
+    color: white !important;
+    background: var(--primaryColor) !important;
+    text-align: center;
+}
+
+#orderManagement .table th,
+#orderManagement .table td {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+#orderManagement .table .functionBtn a {
+    color: #DD6E42;
+    display: block;
+}
+
+#orderManagement .table .functionBtn:hover {
+    background: #E8DAB2;
+}
+
+#orderManagement .pageBtn {
+    padding-top: 20px 0;
+    margin-top: 20px;
+}
+
+#orderManagement .pageBtn ul {
+    list-style: none;
+    display: inline-block;
+    font-size: 0;
+}
+
+#orderManagement .pageBtn ul li{
+    display: inline-block;
+    font-size: 16px;
+}
+
+#orderManagement .pageBtn .page-link {
+    color:var(--primaryColor);
+}
+
+#orderManagement .pageBtn .page-link:hover {
+    background: var(--primaryColor);
+    color: #fff;
+}
+
+@media screen and (max-width:767px) {
+    #orderManagement{
+        width: 100%;
+    }
+
+    #orderManagement .table {
+        width: 100%;
+    }
+}

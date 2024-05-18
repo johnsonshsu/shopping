@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="我們賦予二手衣新生命。為顧客提供二手衣收購寄賣服務。女裝皆有收取！彈性尺碼、春夏/秋冬嚴選、質感日韓衣款、潮流運動女裝、職場推薦穿搭、慵懶家居服飾、精品專區、洋裝吊帶外套、各式時尚二手衣！"
+    />
+    <meta
+      name="keywords"
+      content="二手衣,二手衣收購,二手衣回收,二手衣捐贈,二手衣寄賣,賣二手衣,二手,衣服,退貨,退貨保障,無條件退貨"
+    />
+    <title>Rewear 二手衣</title>
+
+    <!-- CSS 樣式表 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Gudea:wght@400;700&family=Kalam:wght@400;700&family=Ms+Madi&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+    />
+    <link rel="stylesheet" href="css/plugins/animate.css" />
+    <link rel="stylesheet" href="css/plugins/meanmenu.min.css" />
+    <link rel="stylesheet" href="css/plugins/custom-animation.css" />
+    <link rel="stylesheet" href="css/plugins/slick.css" />
+    <link rel="stylesheet" href="css/plugins/jquery-ui.min.css" />
+    <link rel="stylesheet" href="css/shortcode/default.css" />
+    <link rel="stylesheet" href="css/nivo-slider.css" />
+    <link rel="stylesheet" href="css/plugins/fancybox/jquery.fancybox.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/shortcode/shortcodes.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/header-footer-tool.css" />
+    <link rel="stylesheet" href="icofont/header-footer-tool.css" />
+
+    <!-- 依需要引用不同樣式表 -->
+    <link rel="stylesheet" href="css/product-details.css" />
+
+    <!-- Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/jquery.nivo.slider.pack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/jquery.nivo.slider.pack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="js/slider/nivo-active.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  </head>
+
+  <body>
+    <!-- 頁首 -->
+    <header id="header">
+      <!-- 上邊導航 -->
+      <nav>
+        <div class="subject">
+          <div class="navbar navbar-bg navbar-expand-lg p-0 m-0">
+            <!-- 漢堡選單標題 -->
+            <h1><a href="Index.html">Rewear 二手衣</a></h1>
+            <!-- 漢堡選單按鈕 -->
+            <button
+              class="navbar-toggler btn-menu"
+              data-bs-toggle="collapse"
+              data-bs-target="#menu"
+            >
+              <span class="icofont-navigation-menu icofont-menu"></span>
+            </button>
+            <!-- 漢堡選單內容 -->
+            <div class="collapse navbar-collapse .navbar-f" id="menu">
+              <ul class="navbar-nav list justify-content-end">
+                <li><a href="Product.html">所有商品</a></li>
+                <li><a href="ProductWoman.html">女裝</a></li>
+                <li><a href="ProductMan.html">男裝</a></li>
+                <li><a href="Index.html">關於我們</a></li>
+                <li><a href="Contact.html">聯絡我們</a></li>
+                <li><a href="Index.html#faq">常見問題</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 下邊功能 -->
+    <div id="function">
+      <div class="clearfix box">
+        <!-- 購物車 -->
+        <div class="cart fr">
+          <a href="ShoppingCart.html"><span class="icofont-cart"></span></a>
+        </div>
+
+        <!-- 登入 -->
+        <div class="fr a_login">
+          <span class="icofont-ui-user login"></span>
+          <div class="submenu">
+            <ul>
+              <li><a href="OrderManagement.html">訂單管理</a></li>
+              <li><a href="">登出</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 搜索 -->
+        <div class="search fl">
+          <!-- 搜索輸入框 -->
+          <form action="#" class="clearfix">
+            <!-- 搜索鍵 -->
+            <div class="icon-s fl">
+              <span class="icofont-search-1"></span>
+            </div>
+            <div class="searchBox fr">
+              <!-- 文字輸入框 -->
+              <input type="search" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <main class="wrapper sigle-product" id="container">
+      <section id="product_details">
+        <!--single-protfolio-area are start-->
+        <div class="single-protfolio-area ptb-70">
+          <div class="row probox" style="margin: 0 auto">
+            <!-- 左上方圖片區 -->
+            <div class="col-lg-7 col-sm-12">
+              <div class="portfolio-thumbnil-area">
+                <div class="product-more-views">
+                  <div class="tab_thumbnail" data-tabs="tabs">
+                    <div class="thumbnail-carousel">
+                      <ul class="nav">
+                        <li>
+                          <a
+                            class="active"
+                            href="#view11"
+                            class="shadow-box"
+                            aria-controls="view11"
+                            data-bs-toggle="tab"
+                            ><img
+                              src="images/product_details/product/01.jpg"
+                              alt=""
+                          /></a>
+                        </li>
+                        <li>
+                          <a
+                            href="#view22"
+                            class="shadow-box"
+                            aria-controls="view22"
+                            data-bs-toggle="tab"
+                            ><img
+                              src="images/product_details/product/02.jpg"
+                              alt=""
+                          /></a>
+                        </li>
+                        <li>
+                          <a
+                            href="#view33"
+                            class="shadow-box"
+                            aria-controls="view33"
+                            data-bs-toggle="tab"
+                            ><img
+                              src="images/product_details/product/03.jpg"
+                              alt=""
+                          /></a>
+                        </li>
+                        <li>
+                          <a
+                            href="#view44"
+                            class="shadow-box"
+                            aria-controls="view44"
+                            data-bs-toggle="tab"
+                            ><img
+                              src="images/product_details/product/04.jpg"
+                              alt=""
+                          /></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-content active-portfolio-area pos-rltv">
+                  <div role="tabpanel" class="tab-pane active" id="view11">
+                    <div class="product-img">
+                      <a
+                        class="fancybox"
+                        data-fancybox-group="group"
+                        href="images/product_details/product/01.jpg"
+                        ><img
+                          src="images/product_details/product/01.jpg"
+                          alt="Single portfolio"
+                      /></a>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="view22">
+                    <div class="product-img">
+                      <a
+                        class="fancybox"
+                        data-fancybox-group="group"
+                        href="images/product_details/product/02.jpg"
+                        ><img
+                          src="images/product_details/product/02.jpg"
+                          alt="Single portfolio"
+                      /></a>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="view33">
+                    <div class="product-img">
+                      <a
+                        class="fancybox"
+                        data-fancybox-group="group"
+                        href="images/product_details/product/03.jpg"
+                        ><img
+                          src="images/product_details/product/03.jpg"
+                          alt="Single portfolio"
+                      /></a>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="view44">
+                    <div class="product-img">
+                      <a
+                        class="fancybox"
+                        data-fancybox-group="group"
+                        href="images/product_details/product/04.jpg"
+                        ><img
+                          src="images/product_details/product/04.jpg"
+                          alt="Single portfolio"
+                      /></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 右上方文字區 -->
+            <div class="col-lg-5 col-sm-12">
+              <div class="single-product-description">
+                <div class="sp-top-des">
+                  <h3>快乾棉V領T恤<span>(Brand)</span></h3>
+                  <div class="prodcut-ratting-price">
+                    <div class="prodcut-price">
+                      <div class="new-price">$159</div>
+                      <div class="old-price"><del>$250</del></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sp-des">
+                  <p>
+                    這款棉質T恤採用100%純棉面料，柔軟舒適，透氣性佳，適合日常穿著。設計簡約時尚，適合搭配各種服裝，是您衣櫃中必備的單品。
+                  </p>
+                </div>
+                <div class="bt">
+                  <div class="sp-bottom-des">
+                    <label class="font-bold">顏色：藍色</label>
+                    <br />
+                    <label class="font-bold">尺寸：L</label>
+                    <br />
+                    <label>
+                      <span class="font-bold">商品狀況</span>：良好 &ensp;
+                      <button
+                        class="dd"
+                        data-bs-toggle="tooltip"
+                        data-bs-html="true"
+                        title="<div class='ss'>★ <b>全新</b>：未使用過，可能含原包裝袋或標籤<br><br> ★ <b>良好</b>：8~9成新，使用過1~2次，保存良好<br><br> ★ <b>輕度使用</b>：6~7成新，有輕微使用痕跡或瑕疵<br><br> ★ <b>尚可</b>：5成新(含)以下，有明顯使用痕跡或瑕疵</div>"
+                      >
+                        <i
+                          class="fa-sharp fa-solid fa-circle-question color-lightgrey"
+                        ></i>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="quantity-area">
+                    <label class="font-bold">數量：</label>
+                    <div class="cart-quantity">
+                      <form action="#" method="POST" id="myform">
+                        <div class="product-qty">
+                          <div class="cart-quantity">
+                            <div class="cart-plus-minus">
+                              <div class="dec qtybutton">-</div>
+                              <input
+                                type="text"
+                                value="1"
+                                name="qtybutton"
+                                class="cart-plus-minus-box"
+                              />
+                              <div class="inc qtybutton">+</div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <!-- 加入購物車/立即結帳 btn -->
+                  <div class="social-icon socile-icon-style-1">
+                    <ul>
+                      <li>
+                        <a
+                          href="ShoppingCart.html"
+                          data-tooltip="加入購物車"
+                          class="add-cart add-cart-text btnmy"
+                          data-placement="left"
+                          tabindex="0"
+                          >加入購物車<i class="fa fa-cart-plus"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a
+                          href="Payment.html"
+                          data-tooltip="立即結帳"
+                          class="add-cart add-cart-text btnmy"
+                          data-placement="left"
+                          tabindex="0"
+                          >立即結帳</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--single-protfolio-area are start-->
+
+        <!--descripton-area start -->
+        <div class="descripton-area">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="product-area tab-cars-style">
+                  <div class="title-tab-product-category row">
+                    <div class="col-lg-12 text-center">
+                      <ul class="nav mb-40 heading-style-2" role="tablist">
+                        <li role="presentation">
+                          <a
+                            class="active"
+                            href="#newarrival"
+                            aria-controls="newarrival"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            >商品描述 Description</a
+                          >
+                        </li>
+                        <li role="presentation">
+                          <a
+                            href="#specialoffer"
+                            aria-controls="specialoffer"
+                            role="tab"
+                            data-bs-toggle="tab"
+                            >相關標籤 Tags</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="col-lg-12">
+                    <div class="content-tab-product-category">
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+                        <div
+                          role="tabpanel"
+                          class="tab-pane fade show fix active"
+                          id="newarrival"
+                        >
+                          <div class="despro">
+                            <div class="review-wraper">
+                              <h4>商品分類</h4>
+                              <p>所有商品 > 男裝 > 上衣</p>
+                              <br />
+                              <h4>商品詳細尺寸</h4>
+                              <ul>
+                                <li>衣長：60公分</li>
+                                <li>肩寬：40公分</li>
+                                <li>胸寬：50公分</li>
+                                <li>下擺寬：55公分</li>
+                              </ul>
+                              <br />
+                              <h4>商品描述</h4>
+                              <p>
+                                當你穿上這件二手男裝時，你會感受到它柔軟的材質和經典的剪裁，讓你在任何場合都能輕鬆穿出時尚感。它的顏色非常好看，不管你是要搭配牛仔褲還是長褲，都能輕鬆駕馭。而且，由於這件衣服經過精心保養，所以它看起來幾乎是全新的。如果你正在尋找一件高品質、實惠又環保的男裝，這件二手衣服絕對值得你考慮。
+                              </p>
+                              <br />
+                              <h4>商品瑕疵</h4>
+                              <p>衣服下擺破損、領口微小髒汙</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          role="tabpanel"
+                          class="tab-pane fade in fix"
+                          id="specialoffer"
+                        >
+                          <ul class="tag-filter d-flex flex-wrap">
+                            <li><a href="#">時尚</a></li>
+                            <li><a href="#">男裝</a></li>
+                            <li><a href="#">春季</a></li>
+                            <li><a href="#">街頭風</a></li>
+                            <li><a href="#">風格</a></li>
+                            <li><a href="#">T-Shirt</a></li>
+                            <li><a href="#">精品</a></li>
+                            <li><a href="#">2023 新款</a></li>
+                            <li><a href="#">二手衣</a></li>
+                            <li><a href="#">潮流</a></li>
+                            <li><a href="#">休閒</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--descripton-area end-->
+
+        <!--new arrival area start-->
+        <div class="new-arrival-area">
+          <div class="container relpro">
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <div
+                  class="heading-title heading-style pos-rltv mb-50 text-center"
+                >
+                  <h5 class="uppercase">相關商品</h5>
+                </div>
+                <div
+                  class="total-new-arrival new-arrival-slider-active carsoule-btn"
+                >
+                  <div class="product-item">
+                    <!-- single product start-->
+                    <div class="single-product">
+                      <div class="product-img">
+                        <div class="product-label">
+                          <div class="new">New</div>
+                        </div>
+                        <div
+                          class="single-prodcut-img product-overlay pos-rltv"
+                        >
+                          <a href="single-product.html">
+                            <img
+                              alt=""
+                              src="images/product_details/product/01.jpg"
+                              class="primary-image"
+                            />
+                            <img
+                              alt=""
+                              src="images/product_details/product/02.jpg"
+                              class="secondary-image"
+                            />
+                          </a>
+                        </div>
+                        <div
+                          class="product-icon socile-icon-tooltip text-center"
+                        >
+                          <ul>
+                            <li>
+                              <a
+                                href="ShoppingCart.html"
+                                data-tooltip="加入購物車"
+                                class="add-cart"
+                                data-placement="left"
+                                ><i class="fa fa-cart-plus"></i
+                              ></a>
+                            </li>
+                            <li>
+                              <a
+                                href="#"
+                                data-tooltip="快速檢視"
+                                class="q-view"
+                                data-bs-toggle="modal"
+                                data-bs-target=".modal"
+                                ><i class="fa fa-eye"></i
+                              ></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-text">
+                        <div class="prodcut-name">
+                          <a href="single-product.html">快乾棉V領T恤</a>
+                        </div>
+                        <div class="prodcut-ratting-price">
+                          <div class="prodcut-price">
+                            <div class="new-price">$220</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- single product end-->
+                  </div>
+                  <div class="product-item">
+                    <!-- single product start-->
+                    <div class="single-product">
+                      <div class="product-img">
+                        <div
+                          class="single-prodcut-img product-overlay pos-rltv"
+                        >
+                          <a href="single-product.html"
+                            ><img
+                              alt=""
+                              src="images/product_details/product/03.jpg"
+                              class="primary-image" /><img
+                              alt=""
+                              src="images/product_details/product/04.jpg"
+                              class="secondary-image"
+                          /></a>
+                        </div>
+                        <div
+                          class="product-icon socile-icon-tooltip text-center"
+                        >
+                          <ul>
+                            <li>
+                              <a
+                                href="ShoppingCart.html"
+                                data-tooltip="加入購物車"
+                                class="add-cart"
+                                data-placement="left"
+                                ><i class="fa fa-cart-plus"></i
+                              ></a>
+                            </li>
+                            <li>
+                              <a
+                                href="#"
+                                data-tooltip="快速檢視"
+                                class="q-view"
+                                data-bs-toggle="modal"
+                                data-bs-target=".modal"
+                                ><i class="fa fa-eye"></i
+                              ></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-text">
+                        <div class="prodcut-name">
+                          <a href="single-product.html">快乾棉V領T恤</a>
+                        </div>
+                        <div class="prodcut-ratting-price">
+                          <div class="prodcut-price">
+                            <div class="new-price">$220</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- single product end-->
+                  </div>
+                  <div class="product-item">
+                    <!-- single product start-->
+                    <div class="single-product">
+                      <div class="product-img">
+                        <div class="product-label">
+                          <div class="new">Sale</div>
+                        </div>
+                        <div
+                          class="single-prodcut-img product-overlay pos-rltv"
+                        >
+                          <a href="single-product.html">
+                            <img
+                              alt=""
+                              src="images/product_details/product/02.jpg"
+                              class="primary-image"
+                            />
+                            <img
+                              alt=""
+                              src="images/product_details/product/03.jpg"
+                              class="secondary-image"
+                            />
+                          </a>
+                        </div>
+                        <div
+                          class="product-icon socile-icon-tooltip text-center"
+                        >
+                          <ul>
+                            <li>
+                              <a
+                                href="ShoppingCart.html"
+                                data-tooltip="加入購物車"
+                                class="add-cart"
+                                data-placement="left"
+                                ><i class="fa fa-cart-plus"></i
+                              ></a>
+                            </li>
+                            <li>
+                              <a
+                                href="#"
+                                data-tooltip="快速檢視"
+                                class="q-view"
+                                data-bs-toggle="modal"
+                                data-bs-target=".modal"
+                                ><i class="fa fa-eye"></i
+                              ></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-text">
+                        <div class="prodcut-name">
+                          <a href="single-product.html">快乾棉V領T恤</a>
+                        </div>
+                        <div class="prodcut-ratting-price">
+                          <div class="prodcut-price">
+                            <div class="new-price">$220</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- single product end-->
+                  </div>
+                  <div class="product-item">
+                    <!-- single product start-->
+                    <div class="single-product">
+                      <div class="product-img">
+                        <div
+                          class="single-prodcut-img product-overlay pos-rltv"
+                        >
+                          <a href="single-product.html">
+                            <img
+                              alt=""
+                              src="images/product_details/product/04.jpg"
+                              class="primary-image"
+                            />
+                            <img
+                              alt=""
+                              src="images/product_details/product/03.jpg"
+                              class="secondary-image"
+                            />
+                          </a>
+                        </div>
+                        <div
+                          class="product-icon socile-icon-tooltip text-center"
+                        >
+                          <ul>
+                            <li>
+                              <a
+                                href="ShoppingCart.html"
+                                data-tooltip="加入購物車"
+                                class="add-cart"
+                                data-placement="left"
+                                ><i class="fa fa-cart-plus"></i
+                              ></a>
+                            </li>
+                            <li>
+                              <a
+                                href="#"
+                                data-tooltip="快速檢視"
+                                class="q-view"
+                                data-bs-toggle="modal"
+                                data-bs-target=".modal"
+                                ><i class="fa fa-eye"></i
+                              ></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-text">
+                        <div class="prodcut-name">
+                          <a href="single-product.html">快乾棉V領T恤</a>
+                        </div>
+                        <div class="prodcut-ratting-price">
+                          <div class="prodcut-price">
+                            <div class="new-price">$220</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- single product end-->
+                  </div>
+                  <div class="product-item">
+                    <!-- single product start-->
+                    <div class="single-product">
+                      <div class="product-img">
+                        <div
+                          class="single-prodcut-img product-overlay pos-rltv"
+                        >
+                          <a href="single-product.html">
+                            <img
+                              alt=""
+                              src="images/product_details/product/05.jpg"
+                              class="primary-image"
+                            />
+                            <img
+                              alt=""
+                              src="images/product_details/product/06.jpg"
+                              class="secondary-image"
+                            />
+                          </a>
+                        </div>
+                        <div
+                          class="product-icon socile-icon-tooltip text-center"
+                        >
+                          <ul>
+                            <li>
+                              <a
+                                href="ShoppingCart.html"
+                                data-tooltip="加入購物車"
+                                class="add-cart"
+                                data-placement="left"
+                                ><i class="fa fa-cart-plus"></i
+                              ></a>
+                            </li>
+                            <li>
+                              <a
+                                href="#"
+                                data-tooltip="快速檢視"
+                                class="q-view"
+                                data-bs-toggle="modal"
+                                data-bs-target=".modal"
+                                ><i class="fa fa-eye"></i
+                              ></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-text">
+                        <div class="prodcut-name">
+                          <a href="single-product.html">快乾棉V領T恤</a>
+                        </div>
+                        <div class="prodcut-ratting-price">
+                          <div class="prodcut-price">
+                            <div class="new-price">$220</div>
+                            <div class="old-price"><del>$250</del></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- single product end-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--new arrival area end-->
+        <!-- QUICKVIEW PRODUCT -->
+        <div id="quickview-wrapper">
+          <!-- Modal -->
+          <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="modal-product">
+                    <div class="product-images">
+                      <!--modal tab start-->
+                      <div class="portfolio-thumbnil-area-2">
+                        <div class="tab-content active-portfolio-area-2">
+                          <div
+                            role="tabpanel"
+                            class="tab-pane active"
+                            id="view1"
+                          >
+                            <div class="product-img">
+                              <a href="#"
+                                ><img
+                                  src="images/product_details/product/01.jpg"
+                                  alt="Single portfolio"
+                              /></a>
+                            </div>
+                          </div>
+                          <div role="tabpanel" class="tab-pane" id="view2">
+                            <div class="product-img">
+                              <a href="#"
+                                ><img
+                                  src="images/product_details/product/02.jpg"
+                                  alt="Single portfolio"
+                              /></a>
+                            </div>
+                          </div>
+                          <div role="tabpanel" class="tab-pane" id="view3">
+                            <div class="product-img">
+                              <a href="#"
+                                ><img
+                                  src="images/product_details/product/03.jpg"
+                                  alt="Single portfolio"
+                              /></a>
+                            </div>
+                          </div>
+                          <div role="tabpanel" class="tab-pane" id="view4">
+                            <div class="product-img">
+                              <a href="#"
+                                ><img
+                                  src="images/product_details/product/04.jpg"
+                                  alt="Single portfolio"
+                              /></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="product-more-views-2">
+                          <div
+                            class="thumbnail-carousel-modal-2 nav"
+                            data-tabs="tabs"
+                          >
+                            <li class="nav-item" role="presentation">
+                              <a
+                                class="nav-link active"
+                                id="view1"
+                                data-bs-toggle="tab"
+                                href="#view1"
+                                role="tab"
+                                aria-controls="view1"
+                                aria-selected="true"
+                              >
+                                <img
+                                  src="images/product_details/product/01.jpg"
+                                  alt=""
+                                />
+                              </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a
+                                class="nav-link"
+                                id="view2"
+                                data-bs-toggle="tab"
+                                href="#view2"
+                                role="tab"
+                                aria-controls="view2"
+                                aria-selected="true"
+                              >
+                                <img
+                                  src="images/product_details/product/02.jpg"
+                                  alt=""
+                                />
+                              </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a
+                                class="nav-link"
+                                id="view3"
+                                data-bs-toggle="tab"
+                                href="#view3"
+                                role="tab"
+                                aria-controls="view3"
+                                aria-selected="true"
+                              >
+                                <img
+                                  src="images/product_details/product/03.jpg"
+                                  alt=""
+                                />
+                              </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a
+                                class="nav-link"
+                                id="view4"
+                                data-bs-toggle="tab"
+                                href="#view4"
+                                role="tab"
+                                aria-controls="view4"
+                                aria-selected="true"
+                              >
+                                <img
+                                  src="images/product_details/product/04.jpg"
+                                  alt=""
+                                />
+                              </a>
+                            </li>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--modal tab end-->
+                    <!-- .product-images -->
+                    <div class="product-info">
+                      <h1>快乾棉V領T恤</h1>
+                      <div class="price-box-3">
+                        <div class="s-price-box">
+                          <span class="new-price">$160.00</span>
+                          <span class="old-price">$190.00</span>
+                        </div>
+                      </div>
+                      <!-- <a href="shop.html" class="see-all">See all features</a> -->
+                      <div class="quick-add-to-cart">
+                        <form method="post" class="cart">
+                          <div class="numbers-row">
+                            <input
+                              type="number"
+                              id="french-hens"
+                              value="3"
+                              min="1"
+                            />
+                          </div>
+                          <button
+                            class="single_add_to_cart_button"
+                            type="submit"
+                          >
+                            加入購物車
+                          </button>
+                        </form>
+                      </div>
+                      <div class="quick-desc">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nam fringilla augue nec est tristique auctor. Donec non
+                        est at libero.Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Nam fringilla augue nec est tristique
+                        auctor. Donec non est at libero.Nam fringilla tristique
+                        auctor.
+                      </div>
+                    </div>
+                    <!-- .product-info -->
+                  </div>
+                  <!-- .modal-product -->
+                </div>
+                <!-- .modal-body -->
+              </div>
+              <!-- .modal-content -->
+            </div>
+            <!-- .modal-dialog -->
+          </div>
+          <!-- END Modal -->
+        </div>
+        <!-- END QUICKVIEW PRODUCT -->
+      </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer id="footer">
+      <div class="flbox">
+        <div class="box">
+          <a href="Index.html">
+            <img src="images/app/logo-2.png" alt="" class="img-fluid" />
+          </a>
+        </div>
+        <div class="v-line"></div>
+        <div class="box boxabout">
+          <a href="Product.html">所有商品</a>
+          <a href="ProductWoman.html">女裝</a>
+          <a href="ProductMan.html">男裝</a>
+          <a href="Index.html#about">關於我們</a>
+        </div>
+        <div class="box boxcontact">
+          <a href="Index.html#faq">常見問題</a>
+          <a href="Contact.html">聯絡我們</a>
+          <p>0123-456-789</p>
+          <p>rewear@gmail.com</p>
+          <div class="icofont">
+            <a href=""><span class="icofont-facebook"></span></a>
+            <a href=""><span class="icofont-instagram"></span></a>
+            <a href=""><span class="icofont-line"></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <p>&copy; 2023 by REWEAR</p>
+      </div>
+    </footer>
+
+    <!-- 右側固定導航 -->
+    <div id="tool">
+      <a href=""><span class="icofont-arrow-up"></span></a>
+    </div>
+
+    <!-- Javascript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

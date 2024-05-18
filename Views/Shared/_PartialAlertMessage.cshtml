@@ -1,0 +1,95 @@
+@if (TempData["SuccessMessage"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {   
+            toastr.success('@TempData["SuccessMessage"]')
+        })
+    </script>                                 
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.error('@TempData["ErrorMessage"]')
+        })
+    </script>                                 
+}
+@if (TempData["InfoMessage"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.info('@TempData["InfoMessage"]')
+        })
+    </script>                                 
+}
+@if (TempData["WarningMessage"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.warning('@TempData["WarningMessage"]')
+        })
+    </script>                                 
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.error('@TempData["ErrorMessage"]')
+        })
+    </script>                                 
+}
+<script>
+    function DeleteData(id, data) {
+        var message = '確認要刪除';
+        if (!!data) {
+            message += ' [' + data + '] ?'
+        }
+        else {
+            message += '此筆資料?'
+        }
+
+        Swal.fire({
+            title: "<strong>您確定要刪除?</strong>",
+            text: message,
+            icon: 'question',
+            showCancelButton: true,
+            focusConfirm: false,
+            closeOnConfirm: false,
+            confirmButtonText: '<i class="fas fa-check pe-2"></i>確定',
+            cancelButtonText: '<i class="fas fa-times pe-2"></i>取消',
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "@ActionService.CurrentActionLinkUrl("DeleteRow")",
+                    data: { "id": id },
+                    type: "POST",
+                    dataType: "json",
+                }).done(function (value) {
+                    if (value.Mode == true) {
+                        Swal.fire({
+                            title: "<strong>提示訊息</strong>",
+                            text: value.Message,
+                            icon: 'success',
+                            timer: 3000,
+                            //showCancelButton: false,
+                            //focusConfirm: true,
+                            //confirmButtonText: '<i class="fas fa-check pe-2"></i>確定',
+                        }).then(function (result) {
+                            location.reload(true);
+                            //if (result.isConfirmed) {
+                            //window.location.href = '@Url.Action("Index", ActionService.Controller, new { area = ActionService.Area })';
+                            //window.location.href = '@ActionService.CurrentActionLinkUrl("Index")';
+                            //}
+                        });
+                    }
+                    else {
+                        Swal.fire('錯誤訊息', value.Message, 'error');
+                    }
+                }).fail(function (err) {
+                    Swal.fire('錯誤訊息', err, 'error');
+                    console.log(err);
+                });
+            }
+        });
+    }
+</script>

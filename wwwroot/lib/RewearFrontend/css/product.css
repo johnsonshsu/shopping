@@ -1,0 +1,375 @@
+/* 整體 */
+#container {
+    width: 90%;
+    height: auto;
+    background-color: #fafafa;
+}
+
+.content {
+    width: 100%;
+    padding: 10px;
+    padding-top: 40px;
+}
+
+/* 左方欄位 */
+.box1 {
+    width: 100%;
+    border: 1px solid #EDEDED;
+    margin: 30px 5px;
+    transition: all .2s;
+}
+
+.box1:hover {
+    transition: all .5s;
+}
+
+/* .box1 p {
+    color: #d5d5d5;
+    padding: 5px 0;
+} */
+
+.left a {
+    display: block;
+    color: #424B54;
+    font-size: 18px;
+    padding: 8px 40px;
+    transition: all .2s;
+}
+
+.left a:hover {
+    background-color: #424B54;
+    color: #fff;
+    transition: all .5s;
+}
+
+.link-title {
+    font-weight: bold;
+}
+
+.visit {
+    background-color: #EDEDED;
+}
+
+/* 右方欄位 */
+
+.rr {
+    margin: auto;
+}
+
+/* 右上 */
+.t1 {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 40px;
+}
+
+.t1 img {
+    width: 100%;
+}
+
+.right {
+    padding: 20px;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.right-t {
+    text-align: left;
+}
+
+.pagename {
+    color: #424B54;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.filter {
+    text-align: right;
+    padding: 0 30px 0 0;
+}
+
+
+/* 右中 */
+.r-m {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.product {
+    width: 250px;
+    height: 320px;
+    margin: 25px 10px 80px 10px;
+}
+
+.product-img {
+    width: 100%;
+    border: 2px solid #FFF;
+    background-color: #fff;
+    transition: all .2s;
+}
+
+.product-img:hover {
+    box-shadow: #e8e8e8 0 0 8px 3px;
+    overflow: hidden;
+    transition: all .2s;
+}
+
+.product-img img {
+    width: 100%;
+}
+
+.product-name a {
+    display: block;
+    font-size: 20px;
+    color: #424B54;
+}
+
+/* 控制圖片大小 */
+.a,
+.b,
+.c,
+.d,
+.e,
+.f,
+.g,
+.h,
+.i,
+.j,
+.k,
+.l {
+    width: 210px;
+}
+
+.product-name {
+    text-align: left;
+    margin: 10px 5px;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.product-name i {
+    float: right;
+    position: relative;
+    bottom: 26px;
+    opacity: 90%;
+}
+
+/* 右下 */
+.pagelink {
+    margin-top: 60px;
+}
+
+.pagination-sm .page-link {
+    font-size: 16px;
+    background-color: #FFF;
+    color: #687685;
+    padding: 6px 13px;
+    margin-bottom: 10px;
+}
+
+.pagination-sm .page-link:hover {
+    background: #424B54;
+    color: #fff;
+}
+
+
+/* @media中型尺寸 */
+@media screen and (min-width: 768px) and (max-width: 992px) {
+
+    /* 整體 */
+    #container {
+        height: auto;
+    }
+
+    /* 左方欄位 */
+    .left {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .left a {
+        display: inline-block;
+        padding: 5px 20px;
+        padding-top: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .box1 {
+        border-style: none;
+        border-bottom-style: solid;
+        margin: 2px 0;
+        padding: 0;
+    }
+
+    .box1 .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+    }
+
+    /* 右方欄位 */
+    .t1 {
+        display: none;
+    }
+
+    .right {
+        padding: 0px;
+        margin-left: 0px;
+    }
+
+    .r-m {
+        margin: auto;
+        padding: 0;
+        padding: auto;
+    }
+
+    .r-m1,
+    .r-m2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .r-m1 .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+    }
+
+    .r-m1 .row>* {
+        width: 30%;
+        padding: 12px;
+    }
+
+    .pagename {
+        font-size: 24px;
+    }
+
+    .product {
+        margin: 20px 10px 60px 10px;
+        width: 120px;
+    }
+
+    .product-name a {
+        font-size: 20px;
+    }
+
+    .product-name {
+        line-height: 35px;
+    }
+
+}
+
+
+/* @media 小型尺寸 */
+@media screen and (max-width:767px) {
+
+    /* 整體 */
+    #container {
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        margin: 0;
+        margin-top: 30px;
+        padding: 0;
+    }
+
+    /* 左方欄位 */
+    /* .left a {
+        display: none
+    }
+
+    .left {
+        height: 0;
+    } */
+
+    .left a {
+        display: inline-block;
+        padding: 2px 10px;
+        padding-top: 5px;
+        margin-top: 10px;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .box1 {
+        border-style: none;
+        border-bottom-style: solid;
+        margin: 2px 0;
+        padding: 0;
+    }
+
+    .box1 .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+    }
+
+    /* 右方欄位 */
+    /* 右上 */
+    .t1 {
+        display: none;
+    }
+
+    .right {
+        padding: 0px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+
+    .pagename {
+        display: block;
+        text-align: center;
+        font-size: 24px;
+        margin-left: 0;
+    }
+
+    .filter {
+        display: block;
+        text-align: center;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    /* 右中 */
+    .r-m {
+        margin: auto;
+        padding: 0;
+        padding: auto;
+    }
+
+    .r-m1,
+    .r-m2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .r-m1 .row {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+    }
+
+    .r-m1 .row>* {
+        width: 50%;
+        padding: 12px;
+    }
+
+    .pagename {
+        display: none;
+    }
+
+    .product {
+        margin: 20px 0 70px 0;
+        width: 120px;
+    }
+
+    .product-name a {
+        font-size: 18px;
+    }
+
+    .product-name {
+        line-height: 35px;
+    }
+
+}

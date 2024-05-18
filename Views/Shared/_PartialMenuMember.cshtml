@@ -1,0 +1,21 @@
+<li>
+    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+        <i class="fs-4 bi-card-text"></i>
+        <span class="ms-1 d-none d-sm-inline fs-5">訂單查詢</span>
+        <i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("Status" , "Order" , new {area = "Member"})" class="nav-link">
+                <i class="fs-4 bi-search" title="訂單進度查詢"></i>
+                <span class="d-none d-sm-inline">訂單進度查詢</span>
+            </a>
+        </li>
+        <li class="sidesubnav w-100">
+            <a href="@Url.Action("History" , "Order" , new {area = "Member"})" class="nav-link">
+                <i class="fs-4 bi-printer" title="歷史訂單查詢"></i>
+                <span class="d-none d-sm-inline">歷史訂單查詢</span>
+            </a>
+        </li>
+    </ul>
+</li>

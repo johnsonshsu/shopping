@@ -1,0 +1,210 @@
+@using CodeGenerator;
+@model CodeGenerator.CodeGeneratorModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutCodeGenerator";
+    using var codeService = new CodeGeneratorService();
+    var TemplateList = new List<SelectListItem>();
+    var CardSizeList = new List<SelectListItem>();
+    var LayoutColCountList = new List<SelectListItem>();
+    var LabelScaleSizeList = new List<SelectListItem>();
+    var LayoutList = codeService.GetLayoutDropDownList();
+    var ControllerList = codeService.GetControllerDropDownList();
+    var ModelList = codeService.GetTableModelDropDownList();
+    using var enumViewTemplate = new EnumService<enViewTemplate>();
+    using var enumCardSize = new EnumService<enCardSize>();
+    using var enumLayoutColCount = new EnumService<enLayoutColCount>();
+    TemplateList = enumViewTemplate.DropdownList();
+    CardSizeList = enumCardSize.DropdownList();
+    LayoutColCountList = enumLayoutColCount.DropdownNameValueList();
+    LabelScaleSizeList.Add(new SelectListItem() {Value = "1" , Text = "1 : 11"});
+    LabelScaleSizeList.Add(new SelectListItem() {Value = "2" , Text = "2 : 10"});
+    LabelScaleSizeList.Add(new SelectListItem() {Value = "3" , Text = "3 : 9"});
+    LabelScaleSizeList.Add(new SelectListItem() {Value = "4" , Text = "4 : 8"});
+    LabelScaleSizeList.Add(new SelectListItem() {Value = "5" , Text = "5 : 7"});
+    LabelScaleSizeList.Add(new SelectListItem() {Value = "6" , Text = "6 : 6"});
+    LabelScaleSizeList.Where(m => m.Value == "2").FirstOrDefault().Selected = true;
+}
+
+<div class="card card-size-medium">
+    <div class="card-header bg-primary text-white">
+        <h5>ASP.Net Core View(網頁) 產生器</h5>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("CreateView", "CodeGenerator", FormMethod.Post, new { area = "", id = "CodeForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ControllerName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.ControllerName, ControllerList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ViewName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ViewName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ViewName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.TemplateName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.TemplateName, TemplateList, new { @class = "form-control" , onchange="TemplateChange();" })
+                        @Html.ValidationMessageFor(model => model.TemplateName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.LayoutName, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.LayoutName, LayoutList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LayoutName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div id="changeLayoutColCount">
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.LayoutColCount, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.LayoutColCount, LayoutColCountList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LayoutColCount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.LabelScaleSizeName, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.LabelScaleSizeName, LabelScaleSizeList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.LabelScaleSizeName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.UseModel, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.CheckBoxFor(model => model.UseModel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UseModel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div id="changeModelName">
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.ModelName, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.ModelName, ModelList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ModelName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.UseCard, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.CheckBoxFor(model => model.UseCard, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UseCard, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div id="changeCardSize">
+                    <div class="row form-group">
+                        @Html.LabelFor(model => model.CardSize, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.CardSize, CardSizeList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CardSize, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    @Html.LabelFor(model => model.ForceOverride, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.CheckBoxFor(model => model.ForceOverride, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ForceOverride, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <hr />
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="float-start">
+                            <input type="submit" value="下一步" class="btn btn-primary" />
+                        </div>
+                        <div class="float-end">
+                            @Html.ActionLink("返回上一頁", "Index", "CodeGenerator" , new {area = ""} , new { @class = "btn btn-success"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    var form = $('#CodeForm');
+    var chModelName = $('#changeModelName');
+    var chCardSize = $('#changeCardSize');
+    var ckUseModel = $('#UseModel');
+    var ckUseCard = $('#UseCard');
+
+    chModelName.hide();
+    chCardSize.hide();
+
+    ckUseModel.on('click', function() {
+    if ($(this).is(':checked')) {
+      chModelName.show();
+      chModelName.find('input').attr('required', true);
+    } else {
+      chModelName.hide();
+      chModelName.find('input').attr('required', false);
+    }});
+
+    ckUseCard.on('click', function() {
+    if ($(this).is(':checked')) {
+      chCardSize.show();
+      chCardSize.find('input').attr('required', true);
+    } else {
+      chCardSize.hide();
+      chCardSize.find('input').attr('required', false);
+    }});
+
+    function TemplateChange() {
+        var chLayoutColCount = $('#changeLayoutColCount');
+        var data = document.getElementById('TemplateName').value;
+        var cardSize = document.getElementById('CardSize');
+        var useModel = document.getElementById('UseModel');
+        var modelName = document.getElementById('ModelName');
+
+        if (data == "Empty" || data == "List"){
+            chLayoutColCount.hide();
+        }
+        else {
+            chLayoutColCount.show();
+        }
+        if (data == 'List') {
+            cardSize.value = "Max";
+            chModelName.show();
+            chModelName.find('input').attr('required', true);
+            ckUseModel.value = "true";
+            useModel.checked = true;
+        }
+        if (data != 'List') {
+            cardSize.value = "Medium";
+        }
+        if (data == 'Empty') {
+            chModelName.hide();
+            chModelName.find('input').attr('required', false);
+            useModel.checked = false;
+            modelName.value = "";
+        }
+        if (data != 'Empty') {
+            chModelName.show();
+            chModelName.find('input').attr('required', true);
+            ckUseModel.value = "true";
+            useModel.checked = true;
+        }
+    }
+</script>
