@@ -25,7 +25,8 @@ namespace shopping.Controllers
         public IActionResult Login()
         {
             SessionService.IsLogin = false;
-            ActionService.SetActionData("登入", "", "使用者");
+            SessionService.SetProgramInfo("", "使用者");
+            ActionService.SetActionName(enAction.Login);
             vmLogin model = new vmLogin();
             return View(model);
         }
@@ -74,7 +75,8 @@ namespace shopping.Controllers
         [AllowAnonymous()]
         public IActionResult Register()
         {
-            ActionService.SetActionData("註冊", "", "使用者");
+            SessionService.SetProgramInfo("", "使用者");
+            ActionService.SetActionName(enAction.Register);
             vmRegister model = new vmRegister();
             model.GenderCode = "M";
             return View(model);
@@ -143,7 +145,8 @@ namespace shopping.Controllers
         [AllowAnonymous()]
         public IActionResult Forget()
         {
-            ActionService.SetActionData("忘記密碼", "", "使用者");
+            SessionService.SetProgramInfo("", "使用者");
+            ActionService.SetActionName(enAction.Forget);
             vmForget model = new vmForget();
             return View(model);
         }
@@ -211,7 +214,8 @@ namespace shopping.Controllers
         [Login()]
         public IActionResult ResetPassword()
         {
-            ActionService.SetActionData("重設密碼", "", "使用者");
+            SessionService.SetProgramInfo("", "使用者");
+            ActionService.SetActionName(enAction.ResetPassword);
             vmResetPassword model = new vmResetPassword();
             return View(model);
         }
@@ -285,7 +289,8 @@ namespace shopping.Controllers
         [Login()]
         public ActionResult Profile()
         {
-            ActionService.SetActionData("我的帳號", "", "使用者");
+            SessionService.SetProgramInfo("", "使用者");
+            ActionService.SetActionName("我的帳號");
             using var user = new z_sqlUsers();
             var model = user
                 .GetDataList()
@@ -298,7 +303,8 @@ namespace shopping.Controllers
         [Login()]
         public ActionResult PhotoUpload()
         {
-            ActionService.SetActionData("上傳照片", "", "我的帳號");
+            SessionService.SetProgramInfo("", "我的帳號");
+            ActionService.SetActionName(enAction.UploadImage);
             return View();
         }
 
@@ -329,7 +335,8 @@ namespace shopping.Controllers
         [Login()]
         public ActionResult EditProfile()
         {
-            ActionService.SetActionData("修改個人資料", "", "我的帳號");
+            SessionService.SetProgramInfo("", "我的帳號");
+            ActionService.SetActionName(enAction.Edit);
             using var user = new z_sqlUsers();
             var model = user
                 .GetDataList()

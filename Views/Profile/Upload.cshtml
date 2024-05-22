@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = ActionService.ViewActionName;
+    ViewData["Title"] = SessionService.ActionName;
     Layout = "_LayoutLite";
 }
 
@@ -7,10 +7,10 @@
     <div class="card-header bg-secondary text-white">
         <div class="pt-2 px-2">
             <div class="float-start">
-                <h4>@ActionService.ViewActionName</h4>
+                <h4>@SessionService.ActionName</h4>
             </div>
             <div class="float-end">
-                <h4>@ActionService.ViewPrgInfo</h4>
+                <h4>@SessionService.PrgInfo</h4>
             </div>
         </div>
     </div>

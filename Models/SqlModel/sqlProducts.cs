@@ -33,26 +33,12 @@ LEFT OUTER JOIN Categorys ON Products.CategoryNo = Categorys.CategoryNo
 
         public override List<string> GetSearchColumns()
         {
+            //由系統自動取得文字欄位的集合
             List<string> searchColumn;
-            searchColumn = new List<string>() {
-                    "Products.ProdNo",
-                    "Products.ProdName",
-                    "Categorys.CategoryName",
-                    "ProductStatus.StatusName",
-                    "Products.Remark"
-                     };
+            searchColumn = dpr.GetStringColumnList(EntityObject);
+            searchColumn.Add("Categorys.CategoryName");
+            searchColumn.Add("ProductStatus.StatusName");
             return searchColumn;
-        }
-
-        public List<SelectListItem> GetDropDownList(bool textIncludeValue = false)
-        {
-            string str_query = "SELECT ";
-            if (textIncludeValue) str_query += $"ProdNo + ' ' + ";
-            str_query += "ProdName AS Text , ProdNo AS Value FROM Products ";
-            str_query += GetSQLWhere();
-            str_query += "ORDER BY ProdNo";
-            var model = dpr.ReadAll<SelectListItem>(str_query);
-            return model;
         }
 
         /// <summary>
@@ -143,7 +129,7 @@ LEFT OUTER JOIN Categorys ON Products.CategoryNo = Categorys.CategoryNo
         /// </summary>
         /// <param name="categoryNo">分類代號</param>
         /// <returns></returns>
-        public List<Products> GetCategoryDataList(string categoryNo = "")
+        public List<Products> GetCategoryDataList(string categoryNo = "All")
         {
             List<string> searchColumns = GetSearchColumns();
             var model = new List<Products>();
@@ -161,7 +147,7 @@ LEFT OUTER JOIN Categorys ON Products.CategoryNo = Categorys.CategoryNo
             }
             else
             {
-                if (!string.IsNullOrEmpty(categoryNo))
+                if (categoryNo != "All")
                 {
 
                     var data = cate.GetData(categoryNo);

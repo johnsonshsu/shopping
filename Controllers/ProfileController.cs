@@ -8,7 +8,8 @@ namespace shopping.Controllers
         [Login()]
         public ActionResult Index()
         {
-            ActionService.SetActionData("我的帳號", "", "使用者");
+            SessionService.SetProgramInfo("", "使用者");
+            ActionService.SetActionName("我的帳號");
             using var user = new z_sqlUsers();
             var model = user
                 .GetDataList()
@@ -21,7 +22,7 @@ namespace shopping.Controllers
         [Login()]
         public ActionResult Edit()
         {
-            ActionService.SetActionData("修改個人資料", "", "我的帳號");
+            ActionService.SetActionName(enAction.Edit);
             using var user = new z_sqlUsers();
             var model = user
                 .GetDataList()
@@ -44,7 +45,7 @@ namespace shopping.Controllers
         [Login()]
         public IActionResult ResetPassword()
         {
-            ActionService.SetActionData("重設密碼", "", "使用者");
+            ActionService.SetActionName(enAction.ResetPassword);
             vmResetPassword model = new vmResetPassword();
             return View(model);
         }
@@ -119,7 +120,7 @@ namespace shopping.Controllers
         [Login()]
         public ActionResult Upload()
         {
-            ActionService.SetActionData("上傳照片", "", "我的帳號");
+            ActionService.SetActionName(enAction.UploadImage);
             return View();
         }
 

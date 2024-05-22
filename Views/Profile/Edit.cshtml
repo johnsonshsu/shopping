@@ -1,7 +1,7 @@
 @model shopping.Models.Users
 
 @{
-    ViewData["Title"] = "使用者修改資料";
+    ViewData["Title"] = SessionService.ActionName;
     Layout = "_LayoutLite";
     List<SelectListItem> GenderList = new List<SelectListItem>();
     List<SelectListItem> DepartmentList = new List<SelectListItem>();
@@ -18,10 +18,10 @@
     <div class="card header bg-secondary text-white">
         <div class="pt-2 px-2">
             <div class="float-start">
-                <h4>@ActionService.ViewActionName</h4>
+                <h4>@SessionService.ActionName</h4>
             </div>
             <div class="float-end">
-                <h4>@ActionService.ViewPrgInfo</h4>
+                <h4>@SessionService.PrgInfo</h4>
             </div>
         </div>
     </div>

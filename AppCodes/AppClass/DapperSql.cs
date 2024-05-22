@@ -1,5 +1,6 @@
 using Dapper;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using PagedList.Core;
 
 public class DapperSql<TEntity> : BaseClass, IDapperSql<TEntity> where TEntity : class
 {
@@ -7,7 +8,7 @@ public class DapperSql<TEntity> : BaseClass, IDapperSql<TEntity> where TEntity :
     /// Dapper 物件
     /// </summary>
     /// <returns></returns>
-    public DapperRepository dpr = new DapperRepository();
+    public DapperRepository dpr { get; set; } = new DapperRepository();
     /// <summary>
     /// Entity Object
     /// </summary>
@@ -76,10 +77,34 @@ public class DapperSql<TEntity> : BaseClass, IDapperSql<TEntity> where TEntity :
     /// <returns></returns>
     public virtual string GetSQLOrderBy()
     {
+        string str_query = " ORDER BY ";
         if (string.IsNullOrEmpty(OrderByColumn)) OrderByColumn = DefaultOrderByColumn;
         if (string.IsNullOrEmpty(OrderByDirection)) OrderByDirection = DefaultOrderByDirection;
-        string str_query = $" ORDER BY {OrderByColumn}";
-        if (!string.IsNullOrEmpty(OrderByDirection)) str_query += $" {OrderByDirection}";
+        if (OrderByDirection.IndexOf(',') == 0)
+        {
+            str_query += OrderByColumn;
+            if (!string.IsNullOrEmpty(OrderByDirection)) str_query += $" {OrderByDirection}";
+        }
+        else
+        {
+            List<string> lst_column = OrderByColumn.Split(',').ToList();
+            List<string> lst_order = OrderByDirection.Split(',').ToList();
+            if (lst_column.Count == lst_order.Count)
+            {
+                for (int i = 0; i < lst_column.Count; i++)
+                {
+                    str_query += lst_column[i];
+                    str_query += " ";
+                    str_query += lst_order[i];
+                    if (i < lst_column.Count - 1) str_query += ", ";
+                }
+            }
+            else
+            {
+                str_query += OrderByColumn;
+                if (!string.IsNullOrEmpty(OrderByDirection)) str_query += $" {OrderByDirection}";
+            }
+        }
         return str_query;
     }
     /// <summary>
@@ -156,26 +181,105 @@ public class DapperSql<TEntity> : BaseClass, IDapperSql<TEntity> where TEntity :
     /// <summary>
     /// 取得多筆資料(同步呼叫)
     /// </summary>
-    /// <param name="searchString">模糊搜尋文字(空白或不傳入表示不搜尋)</param>
     /// <returns></returns>
-    public virtual List<TEntity> GetDataList(string searchString = "")
+    public virtual List<TEntity> GetDataList()
+    {
+        DynamicParameters parm = new DynamicParameters();
+        var model = GetDataList(parm, "", 0, 0);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <returns></returns>
+    public virtual List<TEntity> GetDataList(DynamicParameters parm)
+    {
+        var model = GetDataList(parm, "", 0, 0);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    public virtual List<TEntity> GetDataList(int page, int pageSize)
+    {
+        DynamicParameters parm = new DynamicParameters();
+        var model = GetDataList(parm, "", page, pageSize);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    public virtual List<TEntity> GetDataList(DynamicParameters parm, int page, int pageSize)
+    {
+        var model = GetDataList(parm, "", page, pageSize);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <returns></returns>
+    public virtual List<TEntity> GetDataList(string searchString)
+    {
+        DynamicParameters parm = new DynamicParameters();
+        var model = GetDataList(parm, searchString, 0, 0);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <returns></returns>
+    public virtual List<TEntity> GetDataList(DynamicParameters parm, string searchString)
+    {
+        var model = GetDataList(parm, searchString, 0, 0);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    public virtual List<TEntity> GetDataList(string searchString, int page, int pageSize)
+    {
+        DynamicParameters parm = new DynamicParameters();
+        var model = GetDataList(parm, searchString, page, pageSize);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    public virtual List<TEntity> GetDataList(DynamicParameters parm, string searchString, int page, int pageSize)
     {
         List<string> searchColumns = GetSearchColumns();
-        DynamicParameters parm = new DynamicParameters();
         var model = new List<TEntity>();
-        using var dpr = new DapperRepository();
         string sql_query = GetSQLSelect();
         string sql_where = GetSQLWhere();
         sql_query += sql_where;
-        if (!string.IsNullOrEmpty(searchString))
+        if (!string.IsNullOrEmpty(searchString) && searchColumns.Count() > 0)
             sql_query += dpr.GetSQLWhereBySearchColumn(EntityObject, searchColumns, sql_where, searchString);
-        if (!string.IsNullOrEmpty(sql_where))
-        {
-            //自定義的 Weher Parm 參數
-            //parm.Add("參數名稱", "參數值");
-        }
         sql_query += GetSQLOrderBy();
-        model = dpr.ReadAll<TEntity>(sql_query, parm);
+        if (parm.ParameterNames.Count() > 0)
+            model = dpr.ReadAll<TEntity>(sql_query, parm);
+        else
+            model = dpr.ReadAll<TEntity>(sql_query);
+        if (page > 0 && pageSize > 0) model = (List<TEntity>)model.ToPagedList(page, pageSize);
         return model;
     }
     /// <summary>
@@ -234,7 +338,6 @@ public class DapperSql<TEntity> : BaseClass, IDapperSql<TEntity> where TEntity :
         }
         else
         {
-            using var dpr = new DapperRepository();
             string sql_query = GetSQLSelect();
             string sql_where = GetSQLWhere();
             sql_query += dpr.GetSQLSelectWhereById(model, sql_where);
@@ -252,26 +355,105 @@ public class DapperSql<TEntity> : BaseClass, IDapperSql<TEntity> where TEntity :
     /// <summary>
     /// 取得多筆資料(非同步呼叫)
     /// </summary>
-    /// <param name="searchString">模糊搜尋文字(空白或不傳入表示不搜尋)</param>
     /// <returns></returns>
-    public virtual async Task<List<TEntity>> GetDataListAsync(string searchString = "")
+    public virtual async Task<List<TEntity>> GetDataListAsync()
+    {
+        DynamicParameters parm = new DynamicParameters();
+        var model = await GetDataListAsync(parm, "", 0, 0);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <returns></returns>
+    public virtual async Task<List<TEntity>> GetDataListAsync(DynamicParameters parm)
+    {
+        var model = await GetDataListAsync(parm, "", 0, 0);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    public virtual async Task<List<TEntity>> GetDataListAsync(int page, int pageSize)
+    {
+        DynamicParameters parm = new DynamicParameters();
+        var model = await GetDataListAsync(parm, "", page, pageSize);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    public virtual async Task<List<TEntity>> GetDataListAsync(DynamicParameters parm, int page, int pageSize)
+    {
+        var model = await GetDataListAsync(parm, "", page, pageSize);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <returns></returns>
+    public virtual async Task<List<TEntity>> GetDataListAsync(string searchString)
+    {
+        DynamicParameters parm = new DynamicParameters();
+        var model = await GetDataListAsync(parm, searchString, 0, 0);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <returns></returns>
+    public virtual async Task<List<TEntity>> GetDataListAsync(DynamicParameters parm, string searchString)
+    {
+        var model = await GetDataListAsync(parm, searchString, 0, 0);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    public virtual async Task<List<TEntity>> GetDataListAsync(string searchString, int page, int pageSize)
+    {
+        DynamicParameters parm = new DynamicParameters();
+        var model = await GetDataListAsync(parm, searchString, page, pageSize);
+        return model;
+    }
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    public virtual async Task<List<TEntity>> GetDataListAsync(DynamicParameters parm, string searchString, int page, int pageSize)
     {
         List<string> searchColumns = GetSearchColumns();
-        DynamicParameters parm = new DynamicParameters();
         var model = new List<TEntity>();
-        using var dpr = new DapperRepository();
         string sql_query = GetSQLSelect();
         string sql_where = GetSQLWhere();
         sql_query += sql_where;
         if (!string.IsNullOrEmpty(searchString))
             sql_query += dpr.GetSQLWhereBySearchColumn(EntityObject, searchColumns, sql_where, searchString);
-        if (!string.IsNullOrEmpty(sql_where))
-        {
-            //自定義的 Weher Parm 參數
-            //parm.Add("參數名稱", "參數值");
-        }
         sql_query += GetSQLOrderBy();
-        model = await dpr.ReadAllAsync<TEntity>(sql_query, parm);
+        if (parm.ParameterNames.Count() > 0)
+            model = await dpr.ReadAllAsync<TEntity>(sql_query, parm);
+        else
+            model = await dpr.ReadAllAsync<TEntity>(sql_query, parm);
+        if (page > 0 && pageSize > 0) model = (List<TEntity>)model.ToPagedList(page, pageSize);
         return model;
     }
     /// <summary>

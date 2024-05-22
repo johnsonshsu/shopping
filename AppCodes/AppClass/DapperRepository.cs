@@ -4,6 +4,8 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Reflection;
 using Dapper;
+using X.PagedList;
+using X.PagedList.Mvc;
 
 /// <summary>
 /// Dapper Repository 類別
@@ -376,6 +378,35 @@ public class DapperRepository : BaseClass, IDapperRepository
     /// </summary>
     /// <typeparam name="T">回傳泛型類型</typeparam>
     /// <param name="query">命令字串</param>
+    /// <param name="page">目前頁數</param>
+    /// <param name="pageSize">筆頁筆數</param>
+    /// <returns></returns>
+    public List<T> ReadAll<T>(string query, int page, int pageSize)
+    {
+        string ErrorMessage = "";
+        List<T> ReturnValue = new List<T>();
+        using var conn = new SqlConnection(ConnectionString);
+        try
+        {
+            conn.Open();
+            var values = conn.Query<T>(query).ToList();
+            ReturnValue = (List<T>)values.ToPagedList(page, pageSize);
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            conn.Close();
+        }
+        return ReturnValue;
+    }
+    /// <summary>
+    /// 讀取多筆記錄
+    /// </summary>
+    /// <typeparam name="T">回傳泛型類型</typeparam>
+    /// <param name="query">命令字串</param>
     /// <param name="parameters">參數變數物件</param>
     /// <returns></returns>
     public List<T> ReadAll<T>(string query, DynamicParameters parameters)
@@ -391,6 +422,46 @@ public class DapperRepository : BaseClass, IDapperRepository
                 ReturnValue = conn.Query<T>(query).ToList();
             else
                 ReturnValue = conn.Query<T>(query, parameters).ToList();
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            conn.Close();
+        }
+        return ReturnValue;
+    }
+    /// <summary>
+    /// 讀取多筆記錄
+    /// </summary>
+    /// <typeparam name="T">回傳泛型類型</typeparam>
+    /// <param name="query">命令字串</param>
+    /// <param name="parameters">參數變數物件</param>
+    /// <param name="page">目前頁數</param>
+    /// <param name="pageSize">筆頁筆數</param>
+    /// <returns></returns>
+    public List<T> ReadAll<T>(string query, DynamicParameters parameters, int page, int pageSize)
+    {
+        string ErrorMessage = "";
+        List<T> ReturnValue = new List<T>();
+        using var conn = new SqlConnection(ConnectionString);
+        try
+        {
+            conn.Open();
+            int int_count = (parameters == null) ? 0 : parameters.ParameterNames.Count();
+            if (int_count == 0)
+            {
+                var values = conn.Query<T>(query, parameters).ToList();
+                ReturnValue = (List<T>)values.ToPagedList(page, pageSize);
+            }
+
+            else
+            {
+                var values = conn.Query<T>(query, parameters).ToList();
+                ReturnValue = (List<T>)values.ToPagedList(page, pageSize);
+            }
         }
         catch (Exception ex)
         {
@@ -434,6 +505,35 @@ public class DapperRepository : BaseClass, IDapperRepository
     /// </summary>
     /// <typeparam name="T">回傳泛型類型</typeparam>
     /// <param name="query">命令字串</param>
+    /// <param name="page">目前頁數</param>
+    /// <param name="pageSize">筆頁筆數</param>
+    /// <returns></returns>
+    public async Task<List<T>> ReadAllAsync<T>(string query, int page, int pageSize)
+    {
+        string ErrorMessage = "";
+        List<T> ReturnValue = new List<T>();
+        using var conn = new SqlConnection(ConnectionString);
+        try
+        {
+            conn.Open();
+            var data = await conn.QueryAsync<T>(query);
+            ReturnValue = (List<T>)data.ToList().ToPagedList(page, pageSize);
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            conn.Close();
+        }
+        return ReturnValue;
+    }
+    /// <summary>
+    /// 讀取多筆記錄(非同步)
+    /// </summary>
+    /// <typeparam name="T">回傳泛型類型</typeparam>
+    /// <param name="query">命令字串</param>
     /// <param name="parameters">參數變數物件</param>
     /// <returns></returns>
     public async Task<List<T>> ReadAllAsync<T>(string query, DynamicParameters parameters)
@@ -454,6 +554,46 @@ public class DapperRepository : BaseClass, IDapperRepository
             {
                 var data = await conn.QueryAsync<T>(query, parameters);
                 ReturnValue = data.ToList();
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            conn.Close();
+        }
+        return ReturnValue;
+
+    }
+    /// <summary>
+    /// 讀取多筆記錄(非同步)
+    /// </summary>
+    /// <typeparam name="T">回傳泛型類型</typeparam>
+    /// <param name="query">命令字串</param>
+    /// <param name="parameters">參數變數物件</param>
+    /// <param name="page">目前頁數</param>
+    /// <param name="pageSize">筆頁筆數</param>
+    /// <returns></returns>
+    public async Task<List<T>> ReadAllAsync<T>(string query, DynamicParameters parameters, int page, int pageSize)
+    {
+        string ErrorMessage = "";
+        List<T> ReturnValue = new List<T>();
+        using var conn = new SqlConnection(ConnectionString);
+        try
+        {
+            conn.Open();
+            int int_count = (parameters == null) ? 0 : parameters.ParameterNames.Count();
+            if (int_count == 0)
+            {
+                var data = await conn.QueryAsync<T>(query);
+                ReturnValue = (List<T>)data.ToList().ToPagedList(page, pageSize);
+            }
+            else
+            {
+                var data = await conn.QueryAsync<T>(query, parameters);
+                ReturnValue = (List<T>)data.ToList().ToPagedList(page, pageSize);
             }
         }
         catch (Exception ex)

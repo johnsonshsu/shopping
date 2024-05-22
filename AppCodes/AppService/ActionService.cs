@@ -45,6 +45,53 @@ public static class ActionService
             return (value == null) ? "" : value.ToString();
         }
     }
+
+    /// <summary>
+    /// 設定目前的 Action 名稱(或自行指定)
+    /// </summary>
+    /// <param name="action">Action 代號</param>
+    public static void SetActionName(enAction action = enAction.None)
+    {
+        SessionService.ActionName = "";
+        if (action == enAction.None)
+        {
+            var currentAction = (enAction)Enum.Parse(typeof(enAction), Action);
+            SessionService.ActionName = SessionService.GetActionName(currentAction);
+        }
+        else
+        {
+            SessionService.ActionName = SessionService.GetActionName(action);
+        }
+    }
+    /// <summary>
+    /// 設定Action 名稱
+    /// </summary>
+    /// <param name="actionName">Action 名稱</param>
+    public static void SetActionName(string actionName)
+    {
+        SessionService.ActionName = actionName;
+    }
+    /// <summary>
+    /// 設定事件副標題
+    /// </summary>
+    /// <param name="subActionName">副標題</param>
+    public static void SetSubActionName(string subActionName = "")
+    {
+        SessionService.SubActionName = subActionName;
+    }
+    /// <summary>
+    /// Action 初始化
+    /// </summary>
+    public static void ActionInit()
+    {
+        SessionService.PrgNo = "";
+        SessionService.PrgName = "";
+        SessionService.ActionName = "";
+        SessionService.SubActionName = "";
+        SessionService.SearchText = "";
+        SessionService.SortColumn = "";
+        SessionService.SortDirection = "asc";
+    }
     /// <summary>
     /// 取得目前的 id 值
     /// </summary>
@@ -139,65 +186,60 @@ public static class ActionService
         set
         { _context?.Session.Set<string>("ViewActionName", value); }
     }
+    /// <summary>
+    /// Home Action 名稱
+    /// </summary>
+    public static string Home { get { return "Home"; } }
 
     /// <summary>
-    /// View 程式代號
+    /// Init Action 名稱
     /// </summary>
-    /// <value></value>
-    public static string ViewPrgNo
-    {
-        get
-        {
-            string str_value = "";
-            if (_context != null) str_value = _context.Session.Get<string>("ViewPrgNo");
-            if (str_value == null) str_value = "";
-            return str_value;
-        }
-        set
-        { _context?.Session.Set<string>("ViewPrgNo", value); }
-    }
+    public static string Init { get { return "Init"; } }
 
     /// <summary>
-    /// View 程式名稱
+    /// Index Action 名稱
     /// </summary>
-    /// <value></value>
-    public static string ViewPrgName
-    {
-        get
-        {
-            string str_value = "";
-            if (_context != null) str_value = _context.Session.Get<string>("ViewPrgName");
-            if (str_value == null) str_value = "";
-            return str_value;
-        }
-        set
-        { _context?.Session.Set<string>("ViewPrgName", value); }
-    }
+    public static string Index { get { return "Index"; } }
 
     /// <summary>
-    /// View 程式名稱
+    /// CreateEdit Action 名稱
     /// </summary>
-    /// <value></value>
-    public static string ViewPrgInfo
-    {
-        get
-        {
-            if (string.IsNullOrEmpty(ViewPrgNo)) return ViewPrgName;
-            return $"{ViewPrgNo} {ViewPrgName}";
-        }
-    }
+    public static string CreateEdit { get { return "CreateEdit"; } }
 
     /// <summary>
-    /// 設定 Action 參數
+    /// Delete Action 名稱
     /// </summary>
-    /// <param name="actionName">Action 名稱</param>
+    public static string Delete { get { return "Delete"; } }
+
+    /// <summary>
+    /// Sort Action 名稱
+    /// </summary>
+    public static string Sort { get { return "Sort"; } }
+
+    /// <summary>
+    /// Search Action 名稱
+    /// </summary>
+    public static string Search { get { return "Search"; } }
+
+    /// <summary>
+    /// SearchText 名稱
+    /// </summary>
+    public static string SearchText { get { return "SearchText"; } }
+
+    /// <summary>
+    /// PageInfo 名稱
+    /// </summary>
+    public static string PageInfo(int page = 1, int PageCount = 1) { return $"第 {page} 頁，共 {PageCount}頁"; ; }
+
+    /// <summary>
+    /// 設定 Action 程式參數
+    /// </summary>
     /// <param name="prgNo">程式代號</param>
     /// <param name="prgName">程式名稱</param>
-    public static void SetActionData(string actionName, string prgNo, string prgName)
+    public static void SetPrgInfo(string prgNo, string prgName)
     {
-        ViewActionName = actionName;
-        ViewPrgNo = prgNo;
-        ViewPrgName = prgName;
+        SessionService.PrgNo = prgNo;
+        SessionService.PrgName = prgName;
     }
 
     /// <summary>

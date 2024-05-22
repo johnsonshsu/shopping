@@ -80,6 +80,22 @@ public static class SessionService
         }
     }
     /// <summary>
+    /// 主檔編號
+    /// </summary>
+    /// <value></value>
+    public static string BaseNo
+    {
+        get
+        {
+            string str_value = "";
+            if (_context != null) str_value = _context.Session.Get<string>("BaseNo");
+            if (str_value == null) str_value = "";
+            return str_value;
+        }
+        set
+        { _context?.Session.Set<string>("BaseNo", value); }
+    }
+    /// <summary>
     /// 使用者圖片
     /// </summary>
     /// <value></value>
@@ -252,6 +268,40 @@ public static class SessionService
     }
 
     /// <summary>
+    /// 目前頁數
+    /// </summary>
+    /// <value></value>
+    public static int Page
+    {
+        get
+        {
+            string str_value = "1";
+            if (_context != null) str_value = _context.Session.Get<string>("Page");
+            if (string.IsNullOrEmpty(str_value)) str_value = "1";
+            return int.Parse(str_value);
+        }
+        set
+        { _context?.Session.Set<string>("Page", value.ToString()); }
+    }
+
+    /// <summary>
+    /// 總頁數
+    /// </summary>
+    /// <value></value>
+    public static int PageCount
+    {
+        get
+        {
+            string str_value = "0";
+            if (_context != null) str_value = _context.Session.Get<string>("PageCount");
+            if (string.IsNullOrEmpty(str_value)) str_value = "0";
+            return int.Parse(str_value);
+        }
+        set
+        { _context?.Session.Set<string>("PageCount", value.ToString()); }
+    }
+
+    /// <summary>
     /// 每頁筆數
     /// </summary>
     /// <value></value>
@@ -323,17 +373,17 @@ public static class SessionService
     /// 子標題名稱
     /// </summary>
     /// <value></value>
-    public static string SubHeaderName
+    public static string SubActionName
     {
         get
         {
             string str_value = "";
-            if (_context != null) str_value = _context.Session.Get<string>("SubHeaderName");
+            if (_context != null) str_value = _context.Session.Get<string>("SubActionName");
             if (str_value == null) str_value = "";
             return str_value;
         }
         set
-        { _context?.Session.Set<string>("SubHeaderName", value); }
+        { _context?.Session.Set<string>("SubActionName", value); }
     }
 
     /// <summary>
@@ -657,8 +707,8 @@ public static class SessionService
     /// <summary>
     /// 設定程式預設事件
     /// </summary>
-    /// <param name="subHeaderName">副標題</param>
-    public static void SetPrgInit(string subHeaderName = "")
+    /// <param name="subActionName">副標題</param>
+    public static void SetPrgInit(string subActionName = "")
     {
         SortColumn = "";
         SortDirection = "";
@@ -667,15 +717,15 @@ public static class SessionService
         {
             PrgNo = "Home";
             PrgName = "首頁";
-            SubHeaderName = "";
+            SubActionName = "";
             return;
         }
-        if (!string.IsNullOrEmpty(subHeaderName))
+        if (!string.IsNullOrEmpty(subActionName))
         {
-            SubHeaderName = subHeaderName;
+            SubActionName = subActionName;
             return;
         }
-        SubHeaderName = PrgInfo;
+        SubActionName = PrgInfo;
     }
 
     /// <summary>
@@ -714,7 +764,9 @@ public static class SessionService
     /// <returns></returns>
     public static void SetPageInfo(int page, int pageCount)
     {
-        PageInfo = $"({page} / {pageCount})";
+        Page = page;
+        PageCount = pageCount;
+        PageInfo = $"({Page} / {PageCount})";
     }
 
     /// <summary>
@@ -723,40 +775,59 @@ public static class SessionService
     /// <param name="action">表單動作</param>
     /// <param name="cardSize">卡片寛度大小</param>
     /// <param name="id">Id</param>
-    /// <param name="subHeaderName">子標題名稱</param>
-    public static void SetActionInfo(enAction action, enCardSize cardSize, int id = 0, string subHeaderName = "")
+    /// <param name="subActionName">子標題名稱</param>
+    public static void SetActionInfo(enAction action, enCardSize cardSize, int id = 0, string subActionName = "")
     {
         if (action == enAction.CreateEdit && id == 0) action = enAction.Create;
         if (action == enAction.CreateEdit && id > 0) action = enAction.Edit;
         List<SelectListItem> actionList = new List<SelectListItem>();
-        actionList.Add(new SelectListItem() { Text = "首頁", Value = "Home" });
-        actionList.Add(new SelectListItem() { Text = "儀表板", Value = "Dashboard" });
-        actionList.Add(new SelectListItem() { Text = "列表", Value = "Index" });
-        actionList.Add(new SelectListItem() { Text = "列表", Value = "List" });
-        actionList.Add(new SelectListItem() { Text = "明細", Value = "Detail" });
-        actionList.Add(new SelectListItem() { Text = "新增", Value = "Create" });
-        actionList.Add(new SelectListItem() { Text = "修改", Value = "Edit" });
-        actionList.Add(new SelectListItem() { Text = "刪除", Value = "Delete" });
-        actionList.Add(new SelectListItem() { Text = "查詢", Value = "Search" });
-        actionList.Add(new SelectListItem() { Text = "排序", Value = "Sort" });
-        actionList.Add(new SelectListItem() { Text = "列印", Value = "print" });
-        actionList.Add(new SelectListItem() { Text = "上傳", Value = "Upload" });
-        actionList.Add(new SelectListItem() { Text = "上傳圖片", Value = "UploadImage" });
-        actionList.Add(new SelectListItem() { Text = "上傳檔案", Value = "UploadFile" });
-        actionList.Add(new SelectListItem() { Text = "下載", Value = "Download" });
-        actionList.Add(new SelectListItem() { Text = "確認", Value = "Confirm" });
-        actionList.Add(new SelectListItem() { Text = "作廢", Value = "Invalid" });
-        actionList.Add(new SelectListItem() { Text = "核准", Value = "Approve" });
-        actionList.Add(new SelectListItem() { Text = "駁回", Value = "Reject" });
-        actionList.Add(new SelectListItem() { Text = "登入", Value = "Login" });
-        actionList.Add(new SelectListItem() { Text = "註冊", Value = "Register" });
-        actionList.Add(new SelectListItem() { Text = "忘記密碼", Value = "Forget" });
+        var actinList = Enum.GetValues(typeof(enAction)).Cast<enAction>().ToList();
+        foreach (var item in actinList)
+        {
+            string str_text = GetActionName(item);
+            string str_value = Enum.GetName(typeof(enAction), item);
+            actionList.Add(new SelectListItem() { Text = str_text, Value = str_value });
+        }
         ActionNo = Enum.GetName(typeof(enAction), action);
         var data = actionList.Where(m => m.Value == ActionNo).FirstOrDefault();
         ActionName = (data == null) ? ActionNo : data.Text;
         string str_size = Enum.GetName(typeof(enCardSize), cardSize).ToLower();
         CardSize = $"card-size-{str_size}";
-        SubHeaderName = "";
+        SubActionName = subActionName;
+    }
+    /// <summary>
+    /// 取得動作名稱
+    /// </summary>
+    /// <param name="action">動作</param>
+    /// <returns></returns>
+    public static string GetActionName(enAction action)
+    {
+        if (action == enAction.None) return "";
+        if (action == enAction.Home) return "首頁";
+        if (action == enAction.Dashboard) return "儀表板";
+        if (action == enAction.Index) return "列表";
+        if (action == enAction.List) return "列表";
+        if (action == enAction.Detail) return "明細";
+        if (action == enAction.Create) return "新增";
+        if (action == enAction.Edit) return "修改";
+        if (action == enAction.Delete) return "刪除";
+        if (action == enAction.Search) return "查詢";
+        if (action == enAction.Sort) return "排序";
+        if (action == enAction.print) return "列印";
+        if (action == enAction.Upload) return "上傳";
+        if (action == enAction.UploadImage) return "上傳圖片";
+        if (action == enAction.UploadFile) return "上傳檔案";
+        if (action == enAction.Download) return "下載";
+        if (action == enAction.Confirm) return "確認";
+        if (action == enAction.Invalid) return "作廢";
+        if (action == enAction.Approve) return "核准";
+        if (action == enAction.Reject) return "駁回";
+        if (action == enAction.Login) return "登入";
+        if (action == enAction.Register) return "註冊";
+        if (action == enAction.Forget) return "忘記密碼";
+        if (action == enAction.Reset) return "重設";
+        if (action == enAction.ResetPassword) return "重設密碼";
+        return "";
     }
 }
 
@@ -765,6 +836,7 @@ public static class SessionService
 /// </summary>
 public enum enAction
 {
+    None,
     Home,
     Dashboard,
     Index,
@@ -787,7 +859,9 @@ public enum enAction
     Reject,
     Login,
     Register,
-    Forget
+    Forget,
+    Reset,
+    ResetPassword
 }
 
 /// <summary>

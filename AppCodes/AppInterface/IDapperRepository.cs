@@ -109,9 +109,28 @@ public interface IDapperRepository
     /// </summary>
     /// <typeparam name="T">回傳泛型類型</typeparam>
     /// <param name="query">命令字串</param>
+    /// <param name="page">目前頁數</param>
+    /// <param name="pageSize">筆頁筆數</param>
+    /// <returns></returns>
+    List<T> ReadAll<T>(string query, int page, int pageSize);
+    /// <summary>
+    /// 讀取多筆記錄
+    /// </summary>
+    /// <typeparam name="T">回傳泛型類型</typeparam>
+    /// <param name="query">命令字串</param>
     /// <param name="parameters">參數變數物件</param>
     /// <returns></returns>
     List<T> ReadAll<T>(string query, DynamicParameters parameters);
+    /// <summary>
+    /// 讀取多筆記錄
+    /// </summary>
+    /// <typeparam name="T">回傳泛型類型</typeparam>
+    /// <param name="query">命令字串</param>
+    /// <param name="parameters">參數變數物件</param>
+    /// <param name="page">目前頁數</param>
+    /// <param name="pageSize">筆頁筆數</param> 
+    /// <returns></returns>
+    List<T> ReadAll<T>(string query, DynamicParameters parameters, int page, int pageSize);
     /// <summary>
     /// 讀取多筆記錄(非同步)
     /// </summary>
@@ -124,9 +143,28 @@ public interface IDapperRepository
     /// </summary>
     /// <typeparam name="T">回傳泛型類型</typeparam>
     /// <param name="query">命令字串</param>
+    /// <param name="page">目前頁數</param>
+    /// <param name="pageSize">筆頁筆數</param> 
+    /// <returns></returns>
+    Task<List<T>> ReadAllAsync<T>(string query, int page, int pageSize);
+    /// <summary>
+    /// 讀取多筆記錄(非同步)
+    /// </summary>
+    /// <typeparam name="T">回傳泛型類型</typeparam>
+    /// <param name="query">命令字串</param>
     /// <param name="parameters">參數變數物件</param>
     /// <returns></returns>
     Task<List<T>> ReadAllAsync<T>(string query, DynamicParameters parameters);
+    /// <summary>
+    /// 讀取多筆記錄(非同步)
+    /// </summary>
+    /// <typeparam name="T">回傳泛型類型</typeparam>
+    /// <param name="query">命令字串</param>
+    /// <param name="parameters">參數變數物件</param>
+    /// <param name="page">目前頁數</param>
+    /// <param name="pageSize">筆頁筆數</param>
+    /// <returns></returns>
+    Task<List<T>> ReadAllAsync<T>(string query, DynamicParameters parameters, int page, int pageSize);
     /// <summary>
     /// 檢查目前 Entity 內指定欄位值是否重覆(同步)
     /// </summary>

@@ -86,15 +86,115 @@ public interface IDapperSql<TEntity>
     /// <summary>
     /// 取得多筆資料(同步呼叫)
     /// </summary>
-    /// <param name="searchString">模糊搜尋文字(空白或不傳入表示不搜尋)</param>
     /// <returns></returns>
-    List<TEntity> GetDataList(string searchString = "");
+    List<TEntity> GetDataList();
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <returns></returns>
+    List<TEntity> GetDataList(DynamicParameters parm);
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    List<TEntity> GetDataList(int page, int pageSize);
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    List<TEntity> GetDataList(DynamicParameters parm, int page, int pageSize);
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <returns></returns>
+    List<TEntity> GetDataList(string searchString);
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <returns></returns>
+    List<TEntity> GetDataList(DynamicParameters parm, string searchString);
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    List<TEntity> GetDataList(string searchString, int page, int pageSize);
+    /// <summary>
+    /// 取得多筆資料(同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    List<TEntity> GetDataList(DynamicParameters parm, string searchString, int page, int pageSize);
     /// <summary>
     /// 取得多筆資料(非同步呼叫)
     /// </summary>
-    /// <param name="searchString">模糊搜尋文字(空白或不傳入表示不搜尋)</param>
     /// <returns></returns>
-    Task<List<TEntity>> GetDataListAsync(string searchString = "");
+    Task<List<TEntity>> GetDataListAsync();
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <returns></returns>
+    Task<List<TEntity>> GetDataListAsync(DynamicParameters parm);
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    Task<List<TEntity>> GetDataListAsync(int page, int pageSize);
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    Task<List<TEntity>> GetDataListAsync(DynamicParameters parm, int page, int pageSize);
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <returns></returns>
+    Task<List<TEntity>> GetDataListAsync(string searchString);
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <returns></returns>
+    Task<List<TEntity>> GetDataListAsync(DynamicParameters parm, string searchString);
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    Task<List<TEntity>> GetDataListAsync(string searchString, int page, int pageSize);
+    /// <summary>
+    /// 取得多筆資料(非同步呼叫)
+    /// </summary>
+    /// <param name="parm">參數</param>
+    /// <param name="searchString">模糊搜尋文字</param>
+    /// <param name="page">當前頁數</param>
+    /// <param name="pageSize">每頁筆數</param>
+    /// <returns></returns>
+    Task<List<TEntity>> GetDataListAsync(DynamicParameters parm, string searchString, int page, int pageSize);
     /// <summary>
     /// 新增或修改資料(同步呼叫)
     /// </summary>
