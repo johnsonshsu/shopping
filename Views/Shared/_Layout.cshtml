@@ -49,7 +49,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/jquery.nivo.slider.pack.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
@@ -81,7 +81,7 @@
                         <!-- 漢堡選單內容 -->
                         <div class="collapse navbar-collapse .navbar-f" id="menu">
                             <ul class="navbar-nav list justify-content-end">
-                                <li><a href="@Url.Action("Index" , "Category" , new {area = ""})">所有商品</a></li>
+                                <li><a href="@Url.Action("Index" , "Category" , new {area = "" , id = "All"})">所有商品</a></li>
                                 @foreach (var item in CategoryList)
                                 {
                                     <li><a href="@Url.Action("Index" , "Category" , new {area = "" , id=item.CategoryNo})">@item.CategoryName</a></li>

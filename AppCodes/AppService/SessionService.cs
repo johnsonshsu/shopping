@@ -688,7 +688,7 @@ public static class SessionService
         { _context?.Session.Set<string>("MessageText", value); }
     }
     /// <summary>
-    /// Message Text
+    /// 商品排序方式
     /// </summary>
     /// <value></value>
     public static string SortNo

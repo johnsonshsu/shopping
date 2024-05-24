@@ -177,9 +177,9 @@ LEFT OUTER JOIN Categorys ON Products.CategoryNo = Categorys.CategoryNo
 
         private string GetSortOrderBy()
         {
-            if (SessionService.SortNo == "High") return " ORDER BY Products.CategoryNo , Products.SalePrice DESC";
-            if (SessionService.SortNo == "Low") return " ORDER BY Products.CategoryNo , Products.SalePrice ASC";
-            if (SessionService.SortNo == "Product") return " ORDER BY Products.CategoryNo , Products.ProdNo ASC";
+            if (SessionService.SortNo == "High") return " ORDER BY Products.SalePrice DESC";
+            if (SessionService.SortNo == "Low") return " ORDER BY Products.SalePrice ASC";
+            if (SessionService.SortNo == "Product") return " ORDER BY Products.ProdNo ASC";
             return " ORDER BY Products.ProdNo";
         }
     }

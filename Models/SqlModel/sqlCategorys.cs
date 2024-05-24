@@ -116,18 +116,13 @@ FROM Categorys WHERE ParentNo = @ParentNo ORDER BY SortNo , CategoryNo
             var model = new Categorys();
             using var dpr = new DapperRepository();
             string sql_query = GetSQLSelect();
-            string sql_where = "WHERE CategoryNo = @CategoryNo ";
-            sql_query += sql_where;
+            sql_query += "WHERE CategoryNo = @CategoryNo ";
             sql_query += GetSQLOrderBy();
             DynamicParameters parm = new DynamicParameters();
-            if (!string.IsNullOrEmpty(sql_where))
-            {
-                //自定義的 Weher Parm 參數
-                parm.Add("CategoryNo", categoryNo);
-            }
+            //自定義的 Weher Parm 參數
+            parm.Add("CategoryNo", categoryNo);
             model = dpr.ReadSingle<Categorys>(sql_query, parm);
             return model;
         }
-
     }
 }

@@ -4,10 +4,14 @@
 @{
     ViewData["Title"] = SessionService.ActionName;
     string ProductImageUrl = "";
+    string CateGoryImageUrl = $"~/images/categorys/{SessionService.StringValue2}.jpg";
     List<Categorys> TopCategoryList = new List<Categorys>();
     List<Categorys> DetailCategoryList = new List<Categorys>();
     using var category = new z_sqlCategorys();
     TopCategoryList = category.GetTopCategoryList();
+    string str_sort_name = "預設排序";
+    if (SessionService.SortNo == "Low") { str_sort_name = "依價格由低至高"; }
+    if (SessionService.SortNo == "High") { str_sort_name = "依價格由高至低"; }
 }
 
 <!-- 內容 -->
@@ -17,16 +21,17 @@
         <aside class="left col-lg-2 d-flex justify-content-center">
             <div>
                 <div class="box1">
-                    <a href="@Url.Action("Index" , "Category" , new {area = ""})" class="link-title visit">全站商品</a>
+                    <a href="@Url.Action("Index" , "Category" , new {area = "" , id = "All"})"
+                        class="link-title visit">全站商品</a>
                 </div>
-                @foreach(var item1 in TopCategoryList)
+                @foreach (var item1 in TopCategoryList)
                 {
                     <div class="box1">
-                        <a href="@Url.Action("Index" , "Category" , new {area = "" , category = item1.CategoryNo})" 
+                        <a href="@Url.Action("Index" , "Category" , new {area = "" , id = item1.CategoryNo})"
                             class="link-title">@item1.CategoryName</a>
                         @{
                             DetailCategoryList = category.GetDetailCategoryList(item1.CategoryNo);
-                            foreach(var item2 in DetailCategoryList)
+                            foreach (var item2 in DetailCategoryList)
                             {
                                 <a href="@Url.Action("Index" , "Category" , new {area = "" , id = item2.CategoryNo})">
                                     @item2.CategoryName
@@ -42,31 +47,49 @@
             <!-- 右上 -->
             <div class="row right-t">
                 <div class="t1">
-                    
+                    <img src="@Url.Content(CateGoryImageUrl)" alt="" />
                 </div>
                 <div class="col-lg-9 col-md-6">
-                    <span class="pagename">全站商品</span>
+                    <span class="pagename">@SessionService.StringValue3</span>
                 </div>
                 <div class="filter col-lg-3 col-md-6">
-                    <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
-                        <option selected value=" 最新上架">預設排序</option>
-                        <option value="價格由高至低">價格由高至低</option>
-                        <option value="價格由低至高">價格由低至高</option>
-                    </select>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            @str_sort_name
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item"
+                                    href="@Url.Action("Sort", "Category", new { area = "", id = "Product" })">預設排序
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="@Url.Action("Sort", "Category", new { area = "", id = "Low" })">依價格由低至高
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="@Url.Action("Sort", "Category", new { area = "", id = "High" })">依價格由高至低
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!-- 右中商品列 -->
             <div class="r-m row right-m d-flex justify-content-center">
                 <div class="r-m1">
                     <div class="r-m2 row d-flex justify-content-center">
-                        @foreach(var item in Model)
+                        @foreach (var item in Model)
                         {
-                            ProductImageUrl = $"~/images/product/{item.ProdNo}/{item.ProdNo}.jpg";
+                            ProductImageUrl = $"~/images/products/{item.ProdNo}/{item.ProdNo}.jpg";
                             <div class="product col-lg-3 col-md-3">
                                 <div class="product-img">
                                     <a href="@Url.Action("Detail" , "Product" , new {area = "" , id = item.ProdNo})">
-                                    <img class="a" src="@Url.Content(ProductImageUrl)" alt="" />
-                                </a>
+                                        <img class="a" src="@Url.Content(ProductImageUrl)" alt="" />
+                                    </a>
                                 </div>
                                 <div class="product-name">
                                     <a href="@Url.Action("Detail" , "Product" , new {area = "" , id = item.ProdNo})">
@@ -86,8 +109,8 @@
                     <div class="col d-flex justify-content-center">
                         <ul class="pagelink pagination pagination-sm">
                             <li class="page-item">
-                                <a href="@Url.Action("Index" , "Category" , new {area = "" , category = SessionService.StringValue1 , page = 1})" 
-                            class="page-link">第一頁</a>
+                                <a href="@Url.Action("Index" , "Category" , new {area = "" , category = SessionService.StringValue1 , page = 1})"
+                                    class="page-link">第一頁</a>
                             </li>
                             @if (SessionService.Page > 1)
                             {
